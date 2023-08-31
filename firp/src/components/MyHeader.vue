@@ -21,6 +21,7 @@
             </div>
         </div>
     </div>
+    <div class="">checking the operation of the git system </div>
 </template> 
 
 <script>
