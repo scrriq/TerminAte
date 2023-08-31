@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-</template>    <!-- <img src="@/assets/icon/IClogin.png" alt=""> -->
+</template> 
 
 <script>
 export default {
