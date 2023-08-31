@@ -1,20 +1,22 @@
 <template>
-  <div class="app">
-    <my-header/>
+  <div class="wrapper">
+    <app-header/>
+    <app-default/>
   </div>
 </template>
 
 <script>
-import MyHeader from './components/MyHeader.vue'
+import AppHeader from './components/AppHeader.vue'
+import AppDefault from './components/AppDefault.vue'
 export default {
 components :{
-  MyHeader
+  AppHeader, AppDefault
 }
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@400;500;700&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -53,4 +55,8 @@ a:hover{text-decoration: none;}
 ul li{list-style: none;}
 img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
+
+.wrapper {
+  display: grid;
+}
 </style>

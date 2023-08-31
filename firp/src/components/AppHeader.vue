@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <header class="header">
         <div class="header__container">
             <div class="header__items">
                 <div class="header__text-logo">
@@ -9,7 +9,7 @@
                     <ul class="header__nav__list">
                         <li class="header__list-link text__orange">Home</li>
                         <li class="header__list-link">About</li>
-                        <li class="header__list-link">Product</li>
+                        <li class="header__list-link">Begin</li>
                         <li class="header__list-link">Services</li>
                     </ul>       
                 </nav>
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 </template> 
 
 <script>
@@ -34,6 +34,7 @@ export default {
     width: 100%;
     height: 70px;
     background-color: #000627;
+    border-bottom: 1px solid white;
 }
 .header__container {
     width: 1300px;
