@@ -2,15 +2,17 @@
   <div class="wrapper">
     <app-header/>
     <app-default/>
+    <app-footer/>
   </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader.vue'
 import AppDefault from './components/AppDefault.vue'
+import AppFooter from './components/AppFooter.vue'
 export default {
 components :{
-  AppHeader, AppDefault
+  AppHeader, AppDefault, AppFooter
 }
 }
 </script>
@@ -57,6 +59,5 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
 
 .wrapper {
-  display: grid;
 }
 </style>

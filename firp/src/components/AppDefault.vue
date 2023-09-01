@@ -37,6 +37,32 @@
                 </div>
             </div>
         </div>
+        <div class="start">
+            <div class="start__container container">
+                <div class="start__header">
+                    Начните прямо сейчас!
+                </div>
+                <div class="start__button-shell">
+                    <button class="start__button">
+                        Начать
+                    </button>
+                 </div>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question__container container">
+                <div class="question__header">
+                    Остались вопросы? <br> - Рады будем вас слышать
+                </div>
+                <form action="" class="question__form">
+                    <input type="email" class="question__input-email" placeholder="Ваша почта...">
+                    <input type="text" class="question__input__text" placeholder="Вопрос...">
+                    <button class="question__button">
+                        Отправить
+                    </button>
+                 </form>
+            </div>
+        </div>
     </main>
 </template>
 <script>
@@ -47,7 +73,7 @@ export default{
 
 <style scoped>
 .main{
-    height: 2000px;
+    height: 100%;
     background-color: #fff;
 }
 .welcome {
@@ -121,7 +147,7 @@ export default{
 }
 .advantages {
     width: 100%;
-    height: 1500px;
+    height: 1300px;
     background-color: #000627;
 }
 .advantages__container {
@@ -205,5 +231,78 @@ export default{
     background-repeat: no-repeat;
     object-fit: cover;
     background-size: 100% 100%;
+}
+.start {
+    padding: 100px 0px 0px 0px;
+    width: 100%;
+    height: 500px;
+    background-color:#000627;
+}
+.start__container {
+}
+.start__header {
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Montserrat';
+    letter-spacing: 0.05em;
+}
+.start__button-shell{
+    margin: 95px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+}
+.start__button {
+    width: 1000px;
+    height: 125px;
+    color:#fff;
+    font-size: 50px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    border: 1px solid #000AFF;
+    box-shadow: 0px 0px 10px 0px #000AFF;
+    background-color: #3d3d3d47;
+    border-radius: 25px;
+}
+.question {
+    width: 100%;
+    height: 600px;
+    background-color: #000627;
+}
+.question__container {
+    width: 800px;
+    margin: 0px auto;
+}
+.question__header {
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Montserrat';
+    letter-spacing: 0.05em;
+}
+.question__form {
+    margin: 65px 0px 0px 0px;
+}
+.question__input-email {
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    color:black;
+}
+.question__input__text {
+    margin: 40px 0px;
+    width: 100%;
+    height: 150px;
+    font-size: 24px;
+    color:black;
+}
+.question__button {
+    width: 100%;
+    height: 50px;
+    background-color: #FF6B00;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.05em;
 }
 </style>
