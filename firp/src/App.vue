@@ -1,18 +1,17 @@
 <template>
   <div class="wrapper">
-    <app-header/>
-    <app-default/>
-    <app-footer/>
+    <app-page/>
   </div>
 </template>
 
 <script>
+import AppPage from './components/AppPage.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppDefault from './components/AppDefault.vue'
 import AppFooter from './components/AppFooter.vue'
 export default {
 components :{
-  AppHeader, AppDefault, AppFooter
+  AppHeader, AppDefault, AppFooter, AppPage
 }
 }
 </script>
