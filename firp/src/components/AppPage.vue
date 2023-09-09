@@ -21,4 +21,5 @@ export default {
 }
 .marin__app-page__container {
 }
+
 </style>
