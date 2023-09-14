@@ -1,8 +1,8 @@
 <template>
-    <div class="menu">
+    <div class="menu" v-bind:class="{isMenu: !show}">
         <nav class="menu__navigation">
-            <div class="menu__logo-block">
-                <div class="menu__logo">
+            <div class="menu__logo-block" v-bind:class="{isMainLogo: !show}">
+                <div class="menu__logo" v-bind:class="{isLogo: !show}">
                     <img src="@/assets/icon/shedule.png" alt="">
                 </div>
                 <div class="menu__logo-text">
@@ -12,7 +12,7 @@
             <div class="menu__nav-blocks">
                 <div class="menu__nav-block__switcher">
                     <button class = 'test' @click="hello"> TEST </button>
-                    <div class="manu__nav-item">
+                    <div class="manu__nav-item" v-bind:class="{isShow: !show}">
                         <div class="item__block-img">
                             <img src="@/assets/icon/shedule.png" alt="">
                         </div>
@@ -20,7 +20,7 @@
                            <p v-if="show">Shedule</p> 
                         </div>
                     </div>
-                    <div class="manu__nav-item">
+                    <div class="manu__nav-item" v-bind:class="{isShow: !show}">
                         <div class="item__block-img">
                             <img src="@/assets/icon/card.png" alt="">
                         </div>
@@ -28,7 +28,7 @@
                            <p v-if="show">Card</p> 
                         </div>
                     </div>
-                    <div class="manu__nav-item">
+                    <div class="manu__nav-item" v-bind:class="{isShow: !show}">
                         <div class="item__block-img">
                             <img src="@/assets/icon/memorise.png" alt="">
                         </div>
@@ -36,7 +36,7 @@
                            <p v-if="show">Memorise</p> 
                         </div>
                     </div>
-                    <div class="manu__nav-item">
+                    <div class="manu__nav-item" v-bind:class="{isShow: !show}">
                         <div class="item__block-img">
                             <img src="@/assets/icon/dictionary.png" alt="">
                         </div>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="menu__naw-block__addition">
-                    <div class="manu__nav-item">
+                    <div class="manu__nav-item" v-bind:class="{isShow: !show}">
                         <div class="item__block-img">
                             <img src="@/assets/icon/setting.png" alt="">
                         </div>
@@ -54,7 +54,7 @@
                            <p v-if="show">Setting</p> 
                         </div>
                     </div>
-                    <div class="manu__nav-item">
+                    <div class="manu__nav-item" v-bind:class="{isShow: !show}">
                         <div class="item__block-img">
                             <img src="@/assets/icon/account.png" alt="">
                         </div>
@@ -94,6 +94,9 @@ export default {
     background-color: #012122;
     border-right: 1px solid white;
 }
+.isMenu{
+    width: 125px;
+}
 .menu__navigation {
     width: 100%;
     height: 100%;
@@ -110,6 +113,12 @@ export default {
     height: 65px;
     gap: 0px 20px;
 }
+.isMainLogo{
+    display: flex;
+    width: 100%;
+    gap: 0px 0px;
+}
+
 .menu__logo {
     width: 100%;
     height: 100%;
@@ -117,6 +126,11 @@ export default {
     justify-content: flex-end;
     align-items: center;
 }
+.isLogo{
+    width: 100%;
+    justify-content: center;
+}
+
 .menu__logo > img{
     position: relative;
     float: left;
@@ -164,6 +178,11 @@ export default {
     display: grid;
     grid-template-columns: 0.8fr 2fr;
     gap: 0px 25px;
+}
+.isShow{
+    display: flex;
+    margin: 0px auto;
+    gap: 0px 0px;
 }
 
 .item__block-img {
