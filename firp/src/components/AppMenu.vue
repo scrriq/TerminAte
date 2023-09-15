@@ -1,17 +1,23 @@
 <template>
-    <div class="menu" v-bind:class="{isMenu: !show}">
+    <div class="menu" v-bind:class="{isMenu: !show}" 
+    @mouseenter="show = true"
+    @mouseleave="show = false">
         <nav class="menu__navigation">
+            <!-- <button class = 'test' @click="hello"> TEST </button> -->
             <div class="menu__logo-block" v-bind:class="{isMainLogo: !show}">
                 <div class="menu__logo" v-bind:class="{isLogo: !show}">
                     <img src="@/assets/icon/shedule.png" alt="">
                 </div>
                 <div class="menu__logo-text">
-                    <a class = 'menu__logo-link' href=""> <span v-if="show" class="text__orange">Language </span><br><span v-if='show'>Learning</span></a>
+                    <a class = 'menu__logo-link' href=""> 
+                        <transition name="transition-hello">
+                              <p class="text__orange" v-if="show">Language Learning</p>
+                        </transition>
+                    </a>
                 </div>
             </div>
             <div class="menu__nav-blocks">
                 <div class="menu__nav-block__switcher">
-                    <button class = 'test' @click="hello"> TEST </button>
                     <div class="manu__nav-item" v-bind:class="{isShow: !show}">
                         <div class="item__block-img">
                             <img src="@/assets/icon/shedule.png" alt="">
@@ -72,7 +78,7 @@
 export default {
     data(){
         return{
-            show: true
+            show: false,
         }
     },
     methods: {
@@ -93,6 +99,7 @@ export default {
     width: 225px;
     background-color: #012122;
     border-right: 1px solid white;
+    transition-duration: 1s;
 }
 .isMenu{
     width: 125px;
@@ -178,6 +185,7 @@ export default {
     display: grid;
     grid-template-columns: 0.8fr 2fr;
     gap: 0px 25px;
+    transition-duration: 1s;
 }
 .isShow{
     display: flex;
@@ -211,5 +219,27 @@ export default {
 }
 .test{
     color:black;
+}
+
+
+.transition-hello-enter-from{
+    opacity: 0 !important;
+}
+.transition-hello-enter-active{
+    transition-delay: 0.2s;
+    transition-duration: 1s;
+}
+.transition-hello-enter-to{
+    opacity: 1 !important;
+}
+
+.transition-hello-leave-from{
+    opacity: 1 !important;
+}
+.transition-hello-leave-active{
+    transition-duration: 0.5s;
+}
+.transition-hello-leave-to{
+    opacity: 0 !important;
 }
 </style>
