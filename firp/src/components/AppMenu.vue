@@ -1,7 +1,6 @@
 <template>
-    <div class="menu" v-bind:class="{menuShow: !show}" @mouseenter="show = true" @mouseleave="show = false" >   <!--  @mouseenter="show = true" @mouseleave="show = false" -->
+    <div class="menu" v-bind:class="{menuShow: !show}" @mouseenter="show = true" @mouseleave="show = false" >
         <nav class="menu__navigation">
-            <!-- <button class = 'test' @click="hello"> TEST </button> -->
             <div class="menu__double-shell">
                 <div class="menu__first-shell">
                     <div class="menu__logo-block">
@@ -31,30 +30,28 @@
                 <div class="menu__second-shell" v-bind:class="{switchBlock: !show}">
                     <div class="menu__logo-block menu_logo__text-block">
                         <a class = 'menu__logo-link' href=""> 
-                            <transition name="transition-hello">
-                                <p class="text__orange" v-if="show">Language Learning</p>
-                            </transition>
+                            <p class="text__orange">Language Learning</p>
                         </a>
                     </div>
                     <div class="menu__text-blocks default__nav-side">
-                        <div class="item__text-block menu__default-block">
-                            <p v-if="show">Shedule</p> 
-                        </div>
-                        <div class="item__text-block menu__default-block">
-                            <p v-if="show">Card</p> 
-                        </div>
-                        <div class="item__text-block menu__default-block">
-                            <p v-if="show">Memorise</p> 
-                        </div>
-                        <div class="item__text-block menu__default-block forward__menu-setting">
-                            <p v-if="show">Dictionary</p> 
-                        </div>
-                        <div class="item__text-block menu__default-block">
-                            <p v-if="show">Setting</p> 
-                        </div>
-                        <div class="item__text-block menu__default-block">
-                            <p v-if="show">Account</p> 
-                        </div>
+                            <div class="item__text-block menu__default-block">
+                                <p>Shedule</p>
+                            </div>
+                            <div class="item__text-block menu__default-block">
+                                <p>Card</p>
+                            </div>
+                            <div class="item__text-block menu__default-block">
+                                <p>Memorise</p> 
+                            </div>
+                            <div class="item__text-block menu__default-block forward__menu-setting">
+                                <p>Dictionary</p> 
+                            </div>
+                            <div class="item__text-block menu__default-block">
+                                <p>Setting</p> 
+                            </div>
+                            <div class="item__text-block menu__default-block">
+                                <p>Account</p> 
+                            </div>
                     </div>
                 </div>
 
@@ -88,10 +85,11 @@ export default {
     width: 225px;
     background-color: #012122;
     border-right: 1px solid white;
-    transition-duration: 1s;
+    transition-duration: .35s;
 }
 .menuShow{
     width: 90px;
+    transition-duration: .35s;
 }
 .menu__navigation {
     width: 100%;
@@ -106,7 +104,7 @@ export default {
 .menu__double-shell {
     width: 100%;
     height: 100%;
-    display: flex;  
+    display: flex;
 }
 .menu__first-shell {
     height: 100%;
@@ -119,9 +117,9 @@ export default {
 .menu__second-shell {
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 .switchBlock{
-    display: none;
 }
 
 .menu__logo-block{
@@ -145,11 +143,15 @@ export default {
 
 }
 .menu__logo-link{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
     font-size: 22px;
     font-family: 'Roboto Condensed';
     font-weight: 700;
     letter-spacing: 0.1em;
-    text-align: start;
     padding: 0px 0px 0px 10px;
 }
 
@@ -211,25 +213,5 @@ export default {
     color: #FFB800 !important;
 }
 
-/* 
-.transition-hello-enter-from{
-    opacity: 0 !important;
-}
-.transition-hello-enter-active{
-    transition-delay: 0.2s;
-    transition-duration: 1s;
-}
-.transition-hello-enter-to{
-    opacity: 1 !important;
-}
 
-.transition-hello-leave-from{
-    opacity: 1 !important;
-}
-.transition-hello-leave-active{
-    transition-duration: 0.5s;
-}
-.transition-hello-leave-to{
-    opacity: 0 !important;
-} */
 </style>
