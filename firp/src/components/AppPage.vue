@@ -1,14 +1,16 @@
 <template> 
 <main class="main__app-page">
     <app-menu/>
+    <app-dictionary/>
 </main>
 </template>
 
 <script>
 import AppMenu from './AppMenu.vue'
+import AppDictionary from './AppDictionary.vue'
 export default {
     components:{
-        AppMenu
+        AppMenu, AppDictionary
     }
 }
 </script>
@@ -16,10 +18,9 @@ export default {
 <style scoped>
 .main__app-page {
     width: 100%;
-    height: 800px;
-    background-color: rgb(57, 24, 24);
-}
-.marin__app-page__container {
+    height: 1000px;
+    background-color: #212121;
+    display: flex;
 }
 
 </style>

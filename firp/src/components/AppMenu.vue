@@ -85,11 +85,11 @@ export default {
     width: 225px;
     background-color: #012122;
     border-right: 1px solid white;
-    transition-duration: .35s;
+    transition-duration: .25s;
 }
 .menuShow{
     width: 90px;
-    transition-duration: .35s;
+    transition-duration: .25s;
 }
 .menu__navigation {
     width: 100%;
