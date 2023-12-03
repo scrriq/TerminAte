@@ -7,11 +7,12 @@
                         <p>Dictionary</p>
                     </div>
                     <div class="dictionary__add-card">
-                        <button class="add-card__btn">Add a new card</button>
+                        <button class="add-card__btn" @click="createPost"> Не работает!</button>
                     </div>
                 </div>
                 <div class="dirctionary__words">
-
+                    <post-form @create = "createPost" />
+                    <post-list v-bind:posts="posts"/>
                 </div>
             </div>
         </div>        
@@ -19,7 +20,28 @@
 </template>
 
 <script>
-
+import PostList from './PostList.vue'
+import PostForm from './PostForm.vue'
+export default{
+    data(){
+        return {
+            posts:[
+                {id:1, title: 'Java script', body: 'Описание поста'},
+                {id:2, title: 'Java script 2', body: 'Описание поста 2'},
+                {id:3, title: 'Java script 3', body: 'Описание поста 3'},
+                {id:4, title: 'Java script 4', body: 'Описание поста 4'},
+            ],
+        }
+    },
+    components:{
+        PostList,PostForm
+    },
+    methods:{
+        createPost(post){
+            this.posts.push(post);
+        },
+    }
+}
 </script>
 
 <style scoped>
@@ -62,7 +84,7 @@
     color: black;
     border: 2px solid black;
     border-radius: 50px;
-    background-color: #428300;
+    background-color: #212121;
 
 }
 .dirctionary__words {
@@ -70,5 +92,13 @@
     border: 3px solid black;
     border-radius: 50px;
     background: #0b9c9c77;
+    padding: 100px;
 }
+.book{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+/* // */
 </style>
