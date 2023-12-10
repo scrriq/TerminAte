@@ -50,7 +50,7 @@ export default{
     height: 100%;
 }
 .dictionary {
-    height: 1000px;
+    height: 1500px;
     background-color: #19495E;
 }
 .dictionary__container {
@@ -59,7 +59,7 @@ export default{
     margin: 0px auto;
 }
 .dictionary__main-block {
-    max-height: 700px;
+    max-height: 1200px;
     margin: 0px 0px 0px 50px;
     padding: 50px 0px 0px 0px;
 }

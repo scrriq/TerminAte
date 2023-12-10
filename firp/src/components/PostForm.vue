@@ -1,8 +1,8 @@
 <template>
     <form @submit.prevent class="fm">
-        <input type="text" class="in" placeholder="Название" v-model="post.title" >
-        <input type="text" class="in" placeholder="Описание" v-model="post.body">
-        <button class="add-card__btn" @click="creatPost">Add a new card</button>
+        <my-input type="text" class="in" placeholder="Название" v-model="post.title" ></my-input>
+        <my-input type="text" class="in" placeholder="Описание" v-model="post.body"></my-input>
+        <my-button class="add_btn" @click="creatPost">Add a new card</my-button>
     </form>
 </template>
 
@@ -15,6 +15,8 @@ export default{
                 body: '',
             }
         }
+    },
+    components:{
     },
     methods:{
         creatPost(){
@@ -30,22 +32,12 @@ export default{
 </script>
 
 <style scoped>
-.add-card__btn{
-    margin: 0px 0px 0px 20px;
-    color:black;
-    width: 100px;
-    height: 30px;
-    background-color: orangered;
-}
-.in{
-    width: 200px;
-    height: 50px;
-    color:black;
-    margin: 0px 0px 0px 20px; 
-}
-
 .fm{
     width: 100%;
     height: 50px;
+    margin: 0px 0px 50px 0px;
+}
+.add_btn{
+    align-self: flex-end;
 }
 </style>
