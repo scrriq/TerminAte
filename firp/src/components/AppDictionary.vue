@@ -11,8 +11,12 @@
                     </div>
                 </div>
                 <div class="dirctionary__words">
-                    <post-form @create = "createPost" />
-                    <post-list v-bind:posts="posts"/>
+                    <h1>Страница с постами</h1>
+                    <my-button @click="showWindow">Создать пост</my-button>
+                    <my-window v-model:show="windowVisible" >
+                        <post-form @create = "createPost" />
+                    </my-window>
+                    <post-list v-bind:posts="posts" @remove="removePost"/>
                 </div>
             </div>
         </div>        
@@ -31,6 +35,7 @@ export default{
                 {id:3, title: 'Java script 3', body: 'Описание поста 3'},
                 {id:4, title: 'Java script 4', body: 'Описание поста 4'},
             ],
+            windowVisible: false,
         }
     },
     components:{
@@ -39,7 +44,15 @@ export default{
     methods:{
         createPost(post){
             this.posts.push(post);
+            this.windowVisible = false;
         },
+        removePost(post){
+            this.posts = this.posts.filter(p => p.id != post.id)
+        },
+        showWindow(){
+            this.windowVisible = true;
+
+        }
     }
 }
 </script>
@@ -48,6 +61,11 @@ export default{
 *{
     width: 100%;
     height: 100%;
+}
+h1{
+    font-size: 30px;
+    max-width: 500px;
+    max-height: 50px;
 }
 .dictionary {
     height: 1500px;

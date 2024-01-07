@@ -34,10 +34,14 @@ export default{
 <style scoped>
 .fm{
     width: 100%;
-    height: 50px;
+    height: 100%;
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
     margin: 0px 0px 50px 0px;
 }
 .add_btn{
-    align-self: flex-end;
+    align-self: center;
 }
 </style>

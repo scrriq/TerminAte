@@ -13,11 +13,10 @@ export default {
 
 <style scoped>
 .add-card__btn{
-    margin: 0px 0px 0px 20px;
     color:white;
-    width: 100px;
-    height: 30px;
+    width: 200px;
+    height: 50px;
     background-color: rgb(50, 48, 47);
-
+    font-size: 18px;
 }
 </style>
