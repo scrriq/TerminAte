@@ -18,7 +18,7 @@ export default {
 <style scoped>
 .main__app-page {
     width: 100%;
-    height: 1000px;
+    height: 100%;
     background-color: #212121;
     display: flex;
 }

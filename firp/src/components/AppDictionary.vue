@@ -7,16 +7,20 @@
                         <p>Dictionary</p>
                     </div>
                     <div class="dictionary__add-card">
-                        <button class="add-card__btn" @click="createPost"> Не работает!</button>
+                        <button class="add-card__btn"> Не работает!</button>
                     </div>
                 </div>
                 <div class="dirctionary__words">
                     <h1>Страница с постами</h1>
-                    <my-button @click="showWindow">Создать пост</my-button>
+                    <div class="app__btn">
+                        <my-button @click="showWindow">Создать пост</my-button>
+                        <my-select class="select" v-model="selectedSort" :options="sortOptions"></my-select>
+                    </div>
                     <my-window v-model:show="windowVisible" >
                         <post-form @create = "createPost" />
                     </my-window>
-                    <post-list v-bind:posts="posts" @remove="removePost"/>
+                    <post-list v-bind:posts="sortedPost" v-if="!isPostLoading" @remove="removePost"/>
+                    <div v-else> Идет загрузка...</div>
                 </div>
             </div>
         </div>        
@@ -26,16 +30,18 @@
 <script>
 import PostList from './PostList.vue'
 import PostForm from './PostForm.vue'
+import axios from 'axios'
 export default{
     data(){
         return {
-            posts:[
-                {id:1, title: 'Java script', body: 'Описание поста'},
-                {id:2, title: 'Java script 2', body: 'Описание поста 2'},
-                {id:3, title: 'Java script 3', body: 'Описание поста 3'},
-                {id:4, title: 'Java script 4', body: 'Описание поста 4'},
-            ],
+            posts:[],
             windowVisible: false,
+            isPostLoading: false,
+            selectedSort: '',
+            sortOptions:[
+                {value:'title', name:'По названию'},
+                {value:'body', name:'По содержимому'},
+            ]
         }
     },
     components:{
@@ -52,6 +58,28 @@ export default{
         showWindow(){
             this.windowVisible = true;
 
+        },
+        async fetchPosts(){
+            try{
+                this.isPostLoading = true;
+                const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
+                this.posts = response.data;
+            }catch(e){
+                alert("Ошибка")
+            } finally{
+                this.isPostLoading = false;
+            }
+        },
+
+    },
+    mounted(){
+            this.fetchPosts();
+    },
+    computed:{
+        sortedPost(){
+            return [...this.posts].sort((post1, post2)=> {
+                return post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
+            })
         }
     }
 }
@@ -64,11 +92,8 @@ export default{
 }
 h1{
     font-size: 30px;
-    max-width: 500px;
-    max-height: 50px;
 }
 .dictionary {
-    height: 1500px;
     background-color: #19495E;
 }
 .dictionary__container {
@@ -77,7 +102,6 @@ h1{
     margin: 0px auto;
 }
 .dictionary__main-block {
-    max-height: 1200px;
     margin: 0px 0px 0px 50px;
     padding: 50px 0px 0px 0px;
 }
@@ -106,16 +130,28 @@ h1{
 
 }
 .dirctionary__words {
-    margin: 50px 0px 0px 0px;
+    margin: 50px 0px 50px 0px;
     border: 3px solid black;
     border-radius: 50px;
     background: #0b9c9c77;
     padding: 100px;
+    display: flex;
+    flex-direction: column;
 }
 .book{
     width: 100px;
     height: 100px;
     background-color: red;
+}
+.app__btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+.select{
+    padding: 0px 100px 0px 0px;
+    width: auto;
+    height: auto;
 }
 
 /* // */
