@@ -19,8 +19,12 @@ export default{
 
 <style scoped>
 .in{
-    width: 200px;
-    height: 50px;
-    color:black;
+    width: 100%;
+    min-height: 50px;
+    border-radius: 15px;
+    background: transparent;
+    border: 3px solid white;
+    font-size: 20px;
+    padding: 0px 15px;
 }
 </style>

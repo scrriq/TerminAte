@@ -1,7 +1,7 @@
 <template>
-    <form @submit.prevent class="fm">
-        <my-input type="text" class="in" placeholder="Название" v-model="post.title" ></my-input>
-        <my-input type="text" class="in" placeholder="Описание" v-model="post.body"></my-input>
+    <form @submit.prevent class="form__window">
+        <my-input type="text" placeholder="Название" v-model="post.title" ></my-input>
+        <my-input type="text" placeholder="Описание" v-model="post.body"></my-input>
         <my-button class="add_btn" @click="creatPost">Add a new card</my-button>
     </form>
 </template>
@@ -32,14 +32,13 @@ export default{
 </script>
 
 <style scoped>
-.fm{
+.form__window{
     width: 100%;
     height: 100%;
     display: flex;  
     flex-direction: column;
     justify-content: center;
-    row-gap: 20px;
-    margin: 0px 0px 50px 0px;
+    row-gap: 30px;
 }
 .add_btn{
     align-self: center;

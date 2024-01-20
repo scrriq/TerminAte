@@ -6,15 +6,20 @@
                     <div class="dictionary__header-text">
                         <p>Dictionary</p>
                     </div>
+
                     <div class="dictionary__add-card">
-                        <button class="add-card__btn"> Не работает!</button>
+                        <button class="add-card__btn" @click="showWindow">Создать карточку</button>
                     </div>
+                    
                 </div>
+
+
+                <!-- блок с карточками -->
                 <div class="dirctionary__words">
-                    <h1>Страница с постами</h1>
-                    <div class="app__btn">
-                        <my-button @click="showWindow">Создать пост</my-button>
-                        <my-select class="select" v-model="selectedSort" :options="sortOptions"></my-select>
+                    <div class="dirctionary__words-nav">
+                        <input type="text" class="dirctionary__words__search" placeholder="Поиск по карточкам...">
+                        <input type="text" class="dirctionary__words__search" placeholder="Выбрать сортировку">
+                        <!-- <my-select class="select" v-model="selectedSort" :options="sortOptions"></my-select> -->
                     </div>
                     <my-window v-model:show="windowVisible" >
                         <post-form @create = "createPost" />
@@ -22,6 +27,9 @@
                     <post-list v-bind:posts="sortedPost" v-if="!isPostLoading" @remove="removePost"/>
                     <div v-else> Идет загрузка...</div>
                 </div>
+
+
+
             </div>
         </div>        
     </div>
@@ -95,6 +103,7 @@ h1{
 }
 .dictionary {
     background-color: #19495E;
+    min-height: 800px;
 }
 .dictionary__container {
     width: 1100px;
@@ -126,15 +135,15 @@ h1{
     color: black;
     border: 2px solid black;
     border-radius: 50px;
-    background-color: #212121;
+    background-color: #428300;
 
 }
 .dirctionary__words {
     margin: 50px 0px 50px 0px;
     border: 3px solid black;
-    border-radius: 50px;
+    border-radius: 25px;
     background: #0b9c9c77;
-    padding: 100px;
+    padding: 30px 100px;
     display: flex;
     flex-direction: column;
 }
@@ -143,16 +152,29 @@ h1{
     height: 100px;
     background-color: red;
 }
-.app__btn {
+.dirctionary__words-nav {
     display: flex;
     justify-content: space-between;
-    margin: 15px 0;
+    column-gap: 35px;
 }
 .select{
     padding: 0px 100px 0px 0px;
     width: auto;
     height: auto;
 }
+.dirctionary__words__search{
+    width: 100%;
+    min-height: 50px;
+    border-radius: 15px;
+    background: transparent;
+    border: 3px solid white;
+    font-size: 20px;
+    padding: 0px 15px;
+}
+.dirctionary__words__search::placeholder{
+    color: #373737;
+    font-weight: 500;
 
+}
 /* // */
 </style>

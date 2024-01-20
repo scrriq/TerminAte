@@ -38,8 +38,10 @@ export default{
     margin: auto;
     background-color: white;
     border-radius: 12px;
-    min-height: 100px;
-    min-width: 100px;
-    padding: 20px;
+    min-height: 250px;
+    min-width: 400px;
+    padding: 40px 20px;
+    background-color: #212121;
+    border: 1px solid white;
 }
 </style>
