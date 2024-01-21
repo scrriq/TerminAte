@@ -17,15 +17,17 @@
                 <!-- блок с карточками -->
                 <div class="dirctionary__words">
                     <div class="dirctionary__words-nav">
-                        <input type="text" class="dirctionary__words__search" placeholder="Поиск по карточкам...">
-                        <input type="text" class="dirctionary__words__search" placeholder="Выбрать сортировку">
-                        <!-- <my-select class="select" v-model="selectedSort" :options="sortOptions"></my-select> -->
+                        <input type="text" v-model="searchQuery" class="dirctionary__words__search" placeholder="Поиск по карточкам...">
+                        <div class="dirctionary__words__search">
+                            <div class="search-text">Сортировка:</div>
+                            <my-select class="select" v-model="selectedSort" :options="sortOptions"></my-select>
+                        </div>
                     </div>
                     <my-window v-model:show="windowVisible" >
                         <post-form @create = "createPost" />
                     </my-window>
-                    <post-list v-bind:posts="sortedPost" v-if="!isPostLoading" @remove="removePost"/>
-                    <div v-else> Идет загрузка...</div>
+                    <post-list v-bind:posts="sortedAndSearchPosts" v-if="!isPostLoading" @remove="removePost"/>
+                    <div v-else class="loading-text"> Идет загрузка...</div>
                 </div>
 
 
@@ -46,6 +48,7 @@ export default{
             windowVisible: false,
             isPostLoading: false,
             selectedSort: '',
+            searchQuery: '',
             sortOptions:[
                 {value:'title', name:'По названию'},
                 {value:'body', name:'По содержимому'},
@@ -88,6 +91,9 @@ export default{
             return [...this.posts].sort((post1, post2)=> {
                 return post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
             })
+        },
+        sortedAndSearchPosts(){
+            return this.sortedPost.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
         }
     }
 }
@@ -153,14 +159,9 @@ h1{
     background-color: red;
 }
 .dirctionary__words-nav {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template: 1fr/ 2fr 1fr;
     column-gap: 35px;
-}
-.select{
-    padding: 0px 100px 0px 0px;
-    width: auto;
-    height: auto;
 }
 .dirctionary__words__search{
     width: 100%;
@@ -170,11 +171,25 @@ h1{
     border: 3px solid white;
     font-size: 20px;
     padding: 0px 15px;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    column-gap: 25px;
+}
+.search-text{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 .dirctionary__words__search::placeholder{
     color: #373737;
     font-weight: 500;
 
+}
+.loading-text{
+    margin: 35px 0px 0px 0px;
+    font-size: 28px;
 }
 /* // */
 </style>

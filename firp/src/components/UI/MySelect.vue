@@ -1,8 +1,8 @@
 <template>
-    <div class="main">
-        <select class="opt" :value="modelValue" @change="changeOptions">
-            <option disabled value=""> Выберите из списка</option>
-            <option v-for="option in options" :key="option.value" :value="option.value" class="bl"> {{ option.name }}</option>
+    <div class="myselect">
+        <select class="myselect__list " :value="modelValue" @change="changeOptions">
+            <option class="myselect__item default" disabled value="" hidden>По умолчанию</option>
+            <option class="myselect__item" v-for="option in options" :key="option.value" :value="option.value" > {{ option.name }}</option>
         </select>
     </div>
 </template>
@@ -10,6 +10,11 @@
 
 <script>
 export default{
+    data(){
+        return{
+            selected: ''
+        }
+    },
     name: 'my-select',
     props : {
         modelValue : {
@@ -31,11 +36,25 @@ export default{
 
 
 <style>
-.opt{
-    width: 200px;
-    height: 40px;
+.myselect {
+    display: flex;
+    align-items: center;
 }
-.bl{
-    color:black;
+.myselect__list {
+    color: #373737;
+    min-width: 70px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px dashed black;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
 }
+
+.myselect__item {
+    color: black;
+    font-weight: 600;
+}
+
+
 </style>

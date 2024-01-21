@@ -64,8 +64,8 @@ export default{
     align-items: center;
 }
 .post__btns > button {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background-color: rgba(191, 0, 0, 0.697);
     color:black;
     font-size: 18px;
