@@ -16,7 +16,7 @@ components :{
 }
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@400;500;700&display=swap');
 *{
   margin: 0;
@@ -58,5 +58,8 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
 
 .wrapper {
+  width: 100%;
+  height: 100%;
+
 }
 </style>
