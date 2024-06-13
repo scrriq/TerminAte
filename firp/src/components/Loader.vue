@@ -12,4 +12,4 @@ import ProgressSpinner from 'primevue/progressspinner';
     fill = "var(--surface-ground)"
     anumationDuration=".5s"
     arial-label="Custom ProgressSpinner"/>
-</template>
+</template>                                                 

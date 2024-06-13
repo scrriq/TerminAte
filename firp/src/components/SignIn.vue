@@ -4,18 +4,19 @@ import {ref} from 'vue';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import {useAuthStore} from '../stores/auth';
+import { useRouter } from 'vue-router';
 import Message from 'primevue/message';
 import Loader from '@/components/Loader.vue'
-import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
+const router = useRouter();
 
 const email = ref();
 const password = ref();
 
-const signup = async () => {
-    await authStore.auth({email: email.value, password: password.value}, 'signup')
-    router.push('/cars')
+const signin = async () => {
+    await authStore.auth({email: email.value, password: password.value}, "signin")
+    router.push('/cars')    
 }
 
 
@@ -26,7 +27,7 @@ const signup = async () => {
 
 <template>
     <div class="main">
-        <h2>Sign up</h2>
+        <h2>Sign in</h2>
         <form class="flex flex-column gap-3">
             <Message v-if = "authStore.error" severity="error">{{ authStore.error }}</Message>
             <div class="p-inputgroup flex-1">
@@ -43,8 +44,8 @@ const signup = async () => {
             </div>
             <Loader v-if="authStore.loader"/>
             <div v-else class="flex flex-column gap-3">
-                <Button label="Signup" @click="signup"/>
-                <span>Are you already registred? <router-link to="/signin">Sign in</router-link></span>
+                <Button label="Signin" @click="signin"/>
+                <span>Are you not registred yet? <router-link to="/signup">Sign up</router-link></span>
             </div>
         </form>
     </div>
