@@ -9,7 +9,7 @@ import 'primeflex/primeflex.css'
 import { initializeApp } from "firebase/app";
 import router from './router';
 import { createPinia } from 'pinia'
-
+import './api'
 
 const firebaseConfig = {
     apiKey: "AIzaSyCHIpRf4SPGw5z7oYIYs_RruNb28M5nck4",

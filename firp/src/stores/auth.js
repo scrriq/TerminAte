@@ -2,8 +2,7 @@ import {ref} from 'vue'
 import {defineStore} from 'pinia'
 import axios from 'axios'
 
-console.log(import.meta)
-const apiKey = processgut.env.VUE_APP_VITE_API_KEY_FIREBASE;
+const apiKey = process.env.VUE_APP_VITE_API_KEY_FIREBASE
 
 export const useAuthStore = defineStore('auth', () => {
 
@@ -28,7 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
         returnSecureToken: true
       });
       console.log(
-        response.data
+        "Response data " + response.data
       );
       userInfo.value = {
         token: response.data.idToken,
@@ -38,27 +37,21 @@ export const useAuthStore = defineStore('auth', () => {
         expiresIn: response.data.expiresIn,
       }
     }catch(err){
-      console.log(err.response.data.error.message)
-        switch(err.response.data.error.message){
+      const er = err.response.data.error.message
+      console.log(er)
+        switch(er){
           case 'EMAIL_EXISTS':
             error.value = 'The email address is already in use by another account.'
             break
-          
           case 'OPERATION_NOT_ALLOWED':
             error.value = 'Password sign-in is disabled for this project.'
             break
-
-          // case 'EMAIL_NOT_FOUND':
-          //   error.value = 'There is no such user'
-          //   break
-
-          // case 'INVALID_PASSWORD':
-          //   error.value = 'Incorrect password'
-          //   break
           case 'INVALID_LOGIN_CREDENTIALS':
             error.value = 'Invalid username or password'
             break
-
+          case 'INVALID_EMAIL':
+            error.value = "INVALID_EMAIL"
+            break
           default:
             error.value = 'Error'
             break

@@ -9,6 +9,7 @@ import Loader from '@/components/Loader.vue'
 import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
+const router = useRouter();
 
 const email = ref();
 const password = ref();
