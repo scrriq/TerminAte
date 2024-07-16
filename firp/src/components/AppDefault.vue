@@ -1,5 +1,6 @@
 <template>
     <main class="main">
+        <app-header/>
         <div class="welcome">
             <div class="welcome__container container">
                 <div class="welcome__blocks">
@@ -63,11 +64,16 @@
                  </form>
             </div>
         </div>
+        <app-footer/>
     </main>
 </template>
 <script>
+import AppHeader from './AppHeader.vue';
+import AppFooter from './AppFooter.vue';
 export default{
-
+components:{
+    AppHeader, AppFooter
+}
 }
 </script>
 

@@ -1,11 +1,6 @@
 <template> 
-    <div class="main__app-page">
-        <div class="app__menu">
-            <app-menu/>
-        </div>
-        <div class="app__container container">
-            <RouterView/>
-        </div>
+    <div class="main">  
+        <h1>Hello world</h1>
     </div>
 </template>
 

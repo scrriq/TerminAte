@@ -1,19 +1,31 @@
 <template>
-  <div class="wrapper">
-    <app-page/>
-  </div>
+    <div class="app">
+      <!-- <div class="menu" v-if="token">
+        <app-menu/>
+      </div> -->
+        <RouterView/>
+    </div>
 </template>
 
-<script>
-import AppPage from './components/AppPage.vue'
-import AppHeader from './components/AppHeader.vue'
-import AppDefault from './components/AppDefault.vue'
-import AppFooter from './components/AppFooter.vue'
-export default {
-components :{
-  AppHeader, AppDefault, AppFooter, AppPage
+<script setup>
+import {RouterLink, RouterView} from 'vue-router'
+import AppMenu from './components/AppMenu.vue';
+import { useAuthStore } from '@/stores/auth';
+import {computed} from 'vue'
+const authStore = useAuthStore()
+
+const token = computed(() => authStore.userInfo.token)
+
+const checkUser = () => {
+    const tokens = JSON.parse(localStorage.getItem('userTokens'))
+    if(tokens){
+      authStore.userInfo.token = tokens.token
+      authStore.userInfo.refrechToken = tokens.refrechToken
+      authStore.userInfo.expiresIn = tokens.expiresIn
+    }
+    console.log(authStore.userInfo); 
 }
-}
+checkUser()
 </script>
 
 <style scoped>
@@ -57,9 +69,8 @@ ul li{list-style: none;}
 img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
 
-.wrapper {
+.app{
   width: 100%;
   height: 100%;
-
 }
 </style>

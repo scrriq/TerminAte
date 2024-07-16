@@ -26,9 +26,6 @@ export const useAuthStore = defineStore('auth', () => {
         ...payload,
         returnSecureToken: true
       });
-      console.log(
-        "Response data " + response.data
-      );
       userInfo.value = {
         token: response.data.idToken,
         email: response.data.email,
@@ -36,6 +33,12 @@ export const useAuthStore = defineStore('auth', () => {
         refrechToken: response.data.refreshToken,
         expiresIn: response.data.expiresIn,
       }
+      localStorage.setItem('userTokens', JSON.stringify({
+        token: userInfo.value.token,
+        refrechToken: userInfo.value.refrechToken,
+        expiresIn: response.data.expiresIn,
+      
+      }))
     }catch(err){
       const er = err.response.data.error.message
       console.log(er)
