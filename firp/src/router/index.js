@@ -5,6 +5,7 @@ import SignIn from '../components/SignIn.vue'
 import Cars from '../components/Cars.vue'
 import AppDefault from "@/components/AppDefault.vue";
 import { useAuthStore } from "@/stores/auth";
+import AppDictionary from "@/components/AppDictionary.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env),
@@ -18,9 +19,9 @@ const router = createRouter({
             }
         },
         {
-            path: '/cars',
-            name: 'cars',
-            component: Cars,
+            path: '/dictionary',
+            name: 'AppDictionary',
+            component: AppDictionary,
             meta:{
                 auth: true
             }
@@ -51,7 +52,7 @@ router.beforeEach((to, from, next) => {
         next('/signin')
     } 
     else if(!to.meta.auth && authStore.userInfo.token) {
-        next('/cars')
+        next('/dictionary')
     }
     else{
         next()

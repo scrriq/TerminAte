@@ -23,9 +23,9 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 const app = createApp(App)
-// components.forEach(component => {
-//     app.component(component.name,component)
-// })
+components.forEach(component => {
+    app.component(component.name,component)
+})
 app.use(router)
 app.use(PrimeVue)
 app.use(createPinia())

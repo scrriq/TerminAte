@@ -1,5 +1,5 @@
 <template>
-    <div class="window" v-if="show" @click.stop="hideWindow">
+    <div class="window" v-if="modelValue" @click.stop="hideWindow">
         <div @click.stop class="window__content">
             <slot></slot>
         </div>
@@ -11,14 +11,14 @@
 export default{
     name: 'my-window',
     props:{
-        show:{
+        modelValue:{
             type: Boolean,
             default: false,
         }
     },
     methods:{
         hideWindow(){
-            this.$emit('update:show', false)
+            this.$emit('update:modelValue', false)
         }
     }
 }
@@ -32,7 +32,7 @@ export default{
     right: 0;
     background-color: rgba(0,0,0,0.5);
     position:fixed;
-    display: flex;
+    display: flex;  
 }
 .window__content {
     margin: auto;

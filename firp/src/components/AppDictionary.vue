@@ -23,7 +23,7 @@
                             <my-select class="select" v-model="selectedSort" :options="sortOptions"></my-select>
                         </div>
                     </div>
-                    <my-window v-model:show="windowVisible" >
+                    <my-window v-model="windowVisible" :modelValue="windowVisible" >
                         <post-form @create = "createPost" />
                     </my-window>
                     <post-list v-bind:posts="sortedAndSearchPosts" v-if="!isPostLoading" @remove="removePost"/>
