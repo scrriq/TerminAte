@@ -13,7 +13,6 @@
                     
                 </div>
 
-
                 <!-- блок с карточками -->
                 <div class="dirctionary__words">
                     <div class="dirctionary__words-nav">
@@ -23,6 +22,7 @@
                             <my-select class="select" v-model="selectedSort" :options="sortOptions"></my-select>
                         </div>
                     </div>
+                    <cars/>
                     <my-window v-model="windowVisible" :modelValue="windowVisible" >
                         <post-form @create = "createPost" />
                     </my-window>
@@ -41,6 +41,7 @@
 import PostList from './PostList.vue'
 import PostForm from './PostForm.vue'
 import axios from 'axios'
+import Cars from './Cars.vue'
 export default{
     data(){
         return {
@@ -56,7 +57,7 @@ export default{
         }
     },
     components:{
-        PostList,PostForm
+        PostList,PostForm, Cars
     },
     methods:{
         createPost(post){

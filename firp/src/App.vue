@@ -3,15 +3,19 @@
       <!-- <div class="menu" v-if="token">
         <app-menu/>
       </div> -->
+      <router-link to="/" v-if="token" @click.prevent="logout"> Logout </router-link>
         <RouterView/>
     </div>
 </template>
 
 <script setup>
 import {RouterLink, RouterView} from 'vue-router'
+import { useRouter } from 'vue-router';
 import AppMenu from './components/AppMenu.vue';
 import { useAuthStore } from '@/stores/auth';
 import {computed} from 'vue'
+import router from './router';
+
 const authStore = useAuthStore()
 
 const token = computed(() => authStore.userInfo.token)
@@ -20,11 +24,16 @@ const checkUser = () => {
     const tokens = JSON.parse(localStorage.getItem('userTokens'))
     if(tokens){
       authStore.userInfo.token = tokens.token
-      authStore.userInfo.refrechToken = tokens.refrechToken
-      authStore.userInfo.expiresIn = tokens.expiresIn
+      authStore.userInfo.refreshToken = tokens.refreshToken
     }
-    console.log(authStore.userInfo); 
 }
+const logout = () => {
+  authStore.logout()
+  localStorage.removeItem('userTokens')
+  router.push('/signin')
+}
+
+
 checkUser()
 </script>
 

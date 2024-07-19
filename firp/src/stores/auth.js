@@ -1,6 +1,7 @@
 import {ref} from 'vue'
 import {defineStore} from 'pinia'
 import axios from 'axios'
+import axiosApiInstance from '@/api'
 
 const apiKey = process.env.VUE_APP_VITE_API_KEY_FIREBASE
 
@@ -10,8 +11,7 @@ export const useAuthStore = defineStore('auth', () => {
     token: '',
     email: '',
     userId: '',
-    refrechToken: '',
-    expiresIn: '',
+    refreshToken: ''
   })
 
   const error = ref('');
@@ -30,13 +30,11 @@ export const useAuthStore = defineStore('auth', () => {
         token: response.data.idToken,
         email: response.data.email,
         userId: response.data.localId,
-        refrechToken: response.data.refreshToken,
-        expiresIn: response.data.expiresIn,
+        refreshToken: response.data.refreshToken,
       }
       localStorage.setItem('userTokens', JSON.stringify({
         token: userInfo.value.token,
-        refrechToken: userInfo.value.refrechToken,
-        expiresIn: response.data.expiresIn,
+        refreshToken: userInfo.value.refreshToken,
       
       }))
     }catch(err){
@@ -64,6 +62,14 @@ export const useAuthStore = defineStore('auth', () => {
       loader.value = false
     }
   }
-  return { auth, userInfo, error, loader}
+  const logout = () => {
+    userInfo.value = {
+      token: '',
+      email: '',
+      userId: '',
+      refreshToken: ''
+    }
+  }
+  return { auth, userInfo, error, loader, logout}
 })
 
