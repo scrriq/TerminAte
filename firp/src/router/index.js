@@ -2,7 +2,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 import SignUp from '../components/SignUp.vue'
 import SignIn from '../components/SignIn.vue'
-import Cars from '../components/Cars.vue'
 import AppDefault from "@/components/AppDefault.vue";
 import { useAuthStore } from "@/stores/auth";
 import AppDictionary from "@/components/AppDictionary.vue";

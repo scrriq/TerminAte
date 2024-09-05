@@ -22,7 +22,6 @@
                             <my-select class="select" v-model="selectedSort" :options="sortOptions"></my-select>
                         </div>
                     </div>
-                    <cars/>
                     <my-window v-model="windowVisible" :modelValue="windowVisible" >
                         <post-form @create = "createPost" />
                     </my-window>
@@ -41,11 +40,18 @@
 import PostList from './PostList.vue'
 import PostForm from './PostForm.vue'
 import axios from 'axios'
-import Cars from './Cars.vue'
+
+import {ref, onMounted} from 'vue'
+import axiosApiInstance from '@/api'
+import Card from "primevue/card"
+import Loader from './Loader.vue';
+
 export default{
     data(){
         return {
-            posts:[],
+            posts:[
+
+            ],
             windowVisible: false,
             isPostLoading: false,
             selectedSort: '',
@@ -53,11 +59,12 @@ export default{
             sortOptions:[
                 {value:'title', name:'По названию'},
                 {value:'body', name:'По содержимому'},
-            ]
+            ],
+            showLoader: false,
         }
     },
     components:{
-        PostList,PostForm, Cars
+        PostList,PostForm
     },
     methods:{
         createPost(post){
@@ -71,21 +78,26 @@ export default{
             this.windowVisible = true;
 
         },
-        async fetchPosts(){
+        async getAllCars(){
+            this.showLoader = true
             try{
-                this.isPostLoading = true;
-                const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
-                this.posts = response.data;
-            }catch(e){
-                alert("Ошибка")
-            } finally{
-                this.isPostLoading = false;
+                const response = await axiosApiInstance.get(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/posts.json?`)
+                for(let key in response.data){
+                    this.posts.push(response.data[key])
+                }
+
+            }catch(err){
+                console.log(err)
             }
+            finally{
+                this.showLoader = false
+            }
+        
         },
 
     },
     mounted(){
-            this.fetchPosts();
+            this.getAllCars();
     },
     computed:{
         sortedPost(){
