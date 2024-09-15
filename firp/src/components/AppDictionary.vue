@@ -40,8 +40,7 @@
 import PostList from './PostList.vue'
 import PostForm from './PostForm.vue'
 import axios from 'axios'
-
-import {ref, onMounted} from 'vue'
+import {onMounted} from 'vue'
 import axiosApiInstance from '@/api'
 import Card from "primevue/card"
 import Loader from './Loader.vue';
@@ -67,9 +66,20 @@ export default{
         PostList,PostForm
     },
     methods:{
-        createPost(post){
+        async createPost(post){
+            try{
+                const postId = new Date().getTime()
+                const response = await axiosApiInstance.post(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/posts.json?`, post);
+                alert("Пост успешно записан")
+
+            }catch(err){
+                console.log(err);
+            }
+            finally{
+            }
             this.posts.push(post);
             this.windowVisible = false;
+            
         },
         removePost(post){
             this.posts = this.posts.filter(p => p.id != post.id)
