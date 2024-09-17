@@ -44,6 +44,7 @@ import {onMounted} from 'vue'
 import axiosApiInstance from '@/api'
 import Card from "primevue/card"
 import Loader from './Loader.vue';
+import { useAuthStore } from '@/stores/auth'
 
 export default{
     data(){
@@ -59,6 +60,7 @@ export default{
                 {value:'title', name:'По названию'},
                 {value:'body', name:'По содержимому'},
             ],
+            userId: '',
             showLoader: false,
         }
     },
@@ -69,7 +71,8 @@ export default{
         async createPost(post){
             try{
                 const postId = new Date().getTime()
-                const response = await axiosApiInstance.post(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/posts.json?`, post);
+                const response = await axiosApiInstance.post(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${this.userId}.json?`, post);
+                this.getAllCars()
                 alert("Пост успешно записан")
 
             }catch(err){
@@ -77,7 +80,6 @@ export default{
             }
             finally{
             }
-            this.posts.push(post);
             this.windowVisible = false;
             
         },
@@ -89,9 +91,10 @@ export default{
 
         },
         async getAllCars(){
+            this.posts = Array()
             this.showLoader = true
             try{
-                const response = await axiosApiInstance.get(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/posts.json?`)
+                const response = await axiosApiInstance.get(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${this.userId}.json?`)
                 for(let key in response.data){
                     this.posts.push(response.data[key])
                 }
@@ -107,7 +110,8 @@ export default{
 
     },
     mounted(){
-            this.getAllCars();
+        this.userId = useAuthStore().userInfo.userId
+        this.getAllCars();
     },
     computed:{
         sortedPost(){

@@ -25,6 +25,7 @@ const checkUser = () => {
     if(tokens){
       authStore.userInfo.token = tokens.token
       authStore.userInfo.refreshToken = tokens.refreshToken
+      authStore.userInfo.userId = tokens.userId
     }
 }
 const logout = () => {
