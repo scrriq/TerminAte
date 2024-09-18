@@ -71,7 +71,7 @@ export default{
         async createPost(post){
             try{
                 const postId = new Date().getTime()
-                const response = await axiosApiInstance.post(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${this.userId}.json?`, post);
+                const response = await axiosApiInstance.put(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${this.userId}/${post.id}.json?`, post);
                 this.getAllCars()
                 alert("Пост успешно записан")
 
@@ -83,8 +83,15 @@ export default{
             this.windowVisible = false;
             
         },
-        removePost(post){
-            this.posts = this.posts.filter(p => p.id != post.id)
+        async removePost(post){
+            try {
+                await axiosApiInstance.delete(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${this.userId}/${post.id}.json`);
+                alert("Пост успешно удален");
+            }catch (err) {
+                console.log(err);
+                alert("Ошибка при удалении поста");
+            }
+            this.getAllCars()
         },
         showWindow(){
             this.windowVisible = true;
