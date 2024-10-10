@@ -6,7 +6,7 @@
                     <h1>Hello</h1>                    
                 </div>
                 <div class="menu__navigation__shell">
-                    <menu-item class="menu__items" v-for="card in cards" :card = "card" :key="card" :show="show" ></menu-item>
+                    <menu-item class="menu__items" @click="$router.push(card.name)"  v-for="card in cards" :card = "card" :key="card" :show="show" ></menu-item>
                 </div>
             </nav>
         </div>
@@ -24,7 +24,7 @@ export default {
             cards:[
             {name: 'Dictionary', imageLink: require("../assets/icon/dictionary.png")},
             {name: 'Shedule',imageLink: require("../assets/icon/shedule.png")},
-            {name: 'Card', imageLink: require("../assets/icon/card.png")},
+            {name: 'Cards', imageLink: require("../assets/icon/card.png")},
             {name: 'Memorise', imageLink: require("../assets/icon/memorise.png")},
             {name: 'Account', imageLink: require("../assets/icon/account.png")},
             ]
@@ -42,8 +42,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .menu {
     position: fixed;
     display: fixed;
@@ -87,6 +85,11 @@ export default {
 .menu__items{
     width: 100%;
     height: 75px;
+}
+
+.menu__items:active{
+    border: 1px solid white;    
+    border-radius: 30px;
 }
 
 

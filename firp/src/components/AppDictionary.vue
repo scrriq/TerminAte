@@ -36,101 +36,57 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import PostList from './PostList.vue'
 import PostForm from './PostForm.vue'
 import axios from 'axios'
-import {onMounted} from 'vue'
+import {ref, computed, onMounted} from 'vue'
 import axiosApiInstance from '@/api'
 import Card from "primevue/card"
 import Loader from './Loader.vue';
 import { useAuthStore } from '@/stores/auth'
+import { usePostsStore } from '@/stores/postsStore'
 
-export default{
-    data(){
-        return {
-            posts:[
+const postStore = usePostsStore();
+const authStore = useAuthStore();
 
-            ],
-            windowVisible: false,
-            isPostLoading: false,
-            selectedSort: '',
-            searchQuery: '',
-            sortOptions:[
-                {value:'title', name:'По названию'},
-                {value:'body', name:'По содержимому'},
-            ],
-            userId: '',
-            showLoader: false,
-        }
-    },
-    components:{
-        PostList,PostForm
-    },
-    methods:{
-        async createPost(post){
-            try{
-                const postId = new Date().getTime()
-                const response = await axiosApiInstance.put(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${this.userId}/${post.id}.json?`, post);
-                this.getAllCars()
-                alert("Пост успешно записан")
+const windowVisible = ref(false);
+const searchQuery = ref('')
+const selectedSort = ref('')
+const showLoader = ref(true)
+const sortOptions = [
+    {value:'title', name:'По названию'},
+    {value:'body', name:'По содержимому'},
+];
 
-            }catch(err){
-                console.log(err);
-            }
-            finally{
-            }
-            this.windowVisible = false;
-            
-        },
-        async removePost(post){
-            try {
-                await axiosApiInstance.delete(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${this.userId}/${post.id}.json`);
-                alert("Пост успешно удален");
-            }catch (err) {
-                console.log(err);
-                alert("Ошибка при удалении поста");
-            }
-            this.getAllCars()
-        },
-        showWindow(){
-            this.windowVisible = true;
-
-        },
-        async getAllCars(){
-            this.posts = Array()
-            this.showLoader = true
-            try{
-                const response = await axiosApiInstance.get(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${this.userId}.json?`)
-                for(let key in response.data){
-                    this.posts.push(response.data[key])
-                }
-
-            }catch(err){
-                console.log(err)
-            }
-            finally{
-                this.showLoader = false
-            }
-        
-        },
-
-    },
-    mounted(){
-        this.userId = useAuthStore().userInfo.userId
-        this.getAllCars();
-    },
-    computed:{
-        sortedPost(){
-            return [...this.posts].sort((post1, post2)=> {
-                return post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
-            })
-        },
-        sortedAndSearchPosts(){
-            return this.sortedPost.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
-        }
-    }
+const showWindow = () => {
+    windowVisible.value = true;
 }
+const createPost = async(post) => {
+    await postStore.createPost(post);
+    windowVisible.value = false
+}
+
+const removePost = async(post) => {
+    await postStore.removePost(post.id)
+}
+
+const sortedPosts = computed(() => {
+    return [...postStore.posts].sort((post1, post2) => {
+        return post1[selectedSort.value]?.localeCompare(post2[selectedSort.value]);
+    });
+});
+
+const sortedAndSearchPosts = computed(() => {
+    return sortedPosts.value.filter(post => 
+        post.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+    );
+});
+
+onMounted(async()=>{
+    postStore.userId = authStore.userInfo.userId;
+    await postStore.fetchPost()
+})
 </script>
 
 <style scoped>
@@ -143,7 +99,7 @@ h1{
 }
 .dictionary {
     background-color: #19495E;
-    min-height: 800px;
+    min-height: 820px;
 }
 .dictionary__container {
     width: 1100px;
@@ -151,7 +107,6 @@ h1{
     margin: 0px auto;
 }
 .dictionary__main-block {
-    margin: 0px 0px 0px 50px;
     padding: 50px 0px 0px 0px;
 }
 .dictionaty__header {

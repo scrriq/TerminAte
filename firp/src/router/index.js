@@ -5,6 +5,7 @@ import SignIn from '../components/SignIn.vue'
 import AppDefault from "@/components/AppDefault.vue";
 import { useAuthStore } from "@/stores/auth";
 import AppDictionary from "@/components/AppDictionary.vue";
+import AppCards from "@/components/AppCards.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env),
@@ -21,6 +22,14 @@ const router = createRouter({
             path: '/dictionary',
             name: 'AppDictionary',
             component: AppDictionary,
+            meta:{
+                auth: true
+            }
+        }, 
+        {
+            path: '/cards',
+            name: 'AppCards',
+            component: AppCards,
             meta:{
                 auth: true
             }
