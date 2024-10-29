@@ -6,6 +6,7 @@ import AppDefault from "@/components/AppDefault.vue";
 import { useAuthStore } from "@/stores/auth";
 import AppDictionary from "@/components/AppDictionary.vue";
 import AppCards from "@/components/AppCards.vue";
+import AppAccount from "@/components/AppAccount.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env),
@@ -34,6 +35,14 @@ const router = createRouter({
                 auth: true
             }
         }, 
+        {
+            path: '/account',
+            name: 'account',
+            component: AppAccount,
+            meta:{
+                auth: true
+            }
+        },
         {
             path: '/signup',
             name: 'signup',

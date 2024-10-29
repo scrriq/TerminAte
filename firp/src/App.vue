@@ -1,6 +1,5 @@
 <template>
     <div class="app">
-      <!-- <router-link to="/" v-if="token" @click.prevent="logout"> Logout </router-link> -->
       <div class="menu" v-if="token">
         <app-menu/>
       </div>
@@ -41,12 +40,14 @@ checkUser()
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@400;500;700&display=swap');
 .html, body{
+  min-height: 100%;
+  min-width: 100%;
   margin: 0;
   padding: 0;
 }
 .app{
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height:100%;
   display: flex;
   flex-direction: row;
 }
