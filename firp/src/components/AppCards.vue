@@ -6,7 +6,7 @@
                     <div class="cards__name">
                         <h1>Cards:</h1>
                     </div>
-                    <div class="cards__info">
+                    <div v-if="stateTrain" class="cards__info">
                         <div class="cards__info__state">
                             State : {{ position + 1 }} / {{countCards}}
                         </div>
@@ -18,17 +18,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="cards__block-card">
+                <div  v-if="stateTrain" class="cards__block-card">
                     <div class="cards__button__shell">
                         <button class="card__button__wrong" @click="wrongAnswer()">WRONG</button>
                     </div>
-
                     <my-card @click = "sideCard = !sideCard; getCurrentTerm()" class="main__card">{{ currentTerm }}</my-card>
-
                     <div class="cards__button__shell">
                         <button class="card__button__right" @click="rightAnswer()">RIGHT</button>
                     </div>
                 </div>
+                <card-result   
+                @switch-state="switchStateTrain"
+                @switch-type="continueTrain" 
+                :position="position" 
+                :wrongCards="wrongCards"
+                :rightCards="rightCards"
+                v-else
+                />
             </div>
         </div>
     </div>
@@ -38,6 +44,7 @@
 <script setup>
 import { usePostsStore } from '@/stores/postsStore';
 import MyCard from './UI/MyCard.vue';
+import CardResult from './CardResult.vue';
 import { onMounted, ref, watch } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 
@@ -48,45 +55,81 @@ const rightCards = ref(0)
 const wrongCards = ref(0)
 const currentTerm = ref("")
 const sideCard = ref(false)
+const stateTrain = ref(true)
+const typeOfTrain = ref(false)
+const countCards = ref(0)
+let trainRepeat = new Array;  
+let trainRepeatTemp = new Array;
+const typeOfArray = ref(false);
+
 
 
 onMounted(async()=>{
     postStore.userId = authStore.userInfo.userId;
     await postStore.fetchPost()
+    countCards.value = postStore.posts.length
+    
     getCurrentTerm()
 })
 
-const countCards = postStore.posts.length
+
 
 
 const rightAnswer = () => {
     position.value++;
     rightCards.value++;
+    sideCard.value = false;
 }
 
 const wrongAnswer = () => {
+    trainRepeatTemp.push(position.value);
     position.value++;
     wrongCards.value++;
+    sideCard.value = false;
 }
 watch(position, async() => {
-    if(position.value == countCards){
-        alert("Вы успешно завершили тренировку!")
-        position.value = 0;
-        rightCards.value = 0;
-        wrongCards.value = 0;
-        // Логика по окончанию тренировки 
+    if(position.value == countCards.value){
+        stateTrain.value = false;
     }
     else getCurrentTerm()
 })
 
-const getCurrentTerm = async() => {
-    if((sideCard.value)) currentTerm.value = await postStore.posts[position.value].body
-    else currentTerm.value = await postStore.posts[position.value].title
-    console.log(sideCard.value);
+
+
+const getCurrentTerm = async() => {    
+    if(!typeOfTrain.value){
+        if((sideCard.value)) currentTerm.value = await postStore.posts[position.value].body
+        else currentTerm.value = await postStore.posts[position.value].title    
+    }
+    else{
+        if((sideCard.value)) currentTerm.value = await postStore.posts[trainRepeat[position.value]].body
+        else currentTerm.value = await postStore.posts[trainRepeat[position.value]].title    
+    } 
     
+
 }
 
+const switchStateTrain = () => {
+    stateTrain.value = !stateTrain.value;  
+    typeOfTrain.value = false;
+    countCards.value = postStore.posts.length;
+    rightCards.value = 0;
+    wrongCards.value = 0;
+    position.value = 0;    
+}
 
+const continueTrain = () => {   
+    trainRepeat = trainRepeatTemp;
+    trainRepeatTemp = [];
+    typeOfTrain.value = true;
+    typeOfArray.value = true;
+    console.log(trainRepeat.length);
+    countCards.value = trainRepeat.length;
+    stateTrain.value = !stateTrain.value;
+    rightCards.value = 0;
+    wrongCards.value = 0;
+    position.value = 0;
+}
 
 
 </script>
