@@ -4,7 +4,9 @@
                 <div class="result__title">
                     <h2 class="result__header">Статистика тренировки:</h2>
                 </div>
-                <div class="result__statistics">
+
+
+                <div v-if="!trainIsFinish" class="result__statistics">
                     <div class="statistics__state" >
                         Общая статистика: {{ rightCards + " / " +  wrongCards }}
                     </div>
@@ -15,8 +17,12 @@
                         Неверных ответов: {{ wrongCards }}
                     </div>
                 </div>
+
+                <div v-else class="result__finish">
+                    <h2>Вы успешно завершиил тренировку</h2>
+                </div>
                 <div class="result__buttons">
-                    <my-button @click="$emit('switchType')" class="button__again button__result"> Продолжить повторение</my-button>
+                    <my-button v-if="!trainIsFinish" @click="$emit('switchType')" class="button__again button__result"> Продолжить повторение</my-button>
                     <my-button  @click="$emit('switchState')" class="button__complete button__result"> Начать заново </my-button>
                 </div>
             </div>
@@ -36,6 +42,10 @@ const props = defineProps({
     },
     rightCards: {
         type: Number,
+        required: true
+    },
+    trainIsFinish: {
+        type: Boolean,
         required: true
     }
 });
@@ -106,5 +116,12 @@ const startAgain = () => {
     align-items: center;
     justify-content: space-around;
 }
-    
+.result__finish{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
 </style>    

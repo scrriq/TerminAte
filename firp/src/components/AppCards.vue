@@ -33,6 +33,7 @@
                 :position="position" 
                 :wrongCards="wrongCards"
                 :rightCards="rightCards"
+                :trainIsFinish="trainIsFinish"
                 v-else
                 />
             </div>
@@ -61,6 +62,7 @@ const countCards = ref(0)
 let trainRepeat = new Array;  
 let trainRepeatTemp = new Array;
 const typeOfArray = ref(false);
+const trainIsFinish = ref(false)
 
 
 
@@ -89,6 +91,9 @@ const wrongAnswer = () => {
 }
 watch(position, async() => {
     if(position.value == countCards.value){
+        if(wrongCards.value === 0){
+            trainIsFinish.value = true; 
+        }
         stateTrain.value = false;
     }
     else getCurrentTerm()
@@ -110,6 +115,7 @@ const getCurrentTerm = async() => {
 }
 
 const switchStateTrain = () => {
+    trainIsFinish.value = false;
     stateTrain.value = !stateTrain.value;  
     typeOfTrain.value = false;
     countCards.value = postStore.posts.length;
