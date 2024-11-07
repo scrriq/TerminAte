@@ -19,7 +19,6 @@ export default{
 
 <style scoped>
 .in{
-    width: 100%;
     min-height: 50px;
     border-radius: 15px;
     background: transparent;
