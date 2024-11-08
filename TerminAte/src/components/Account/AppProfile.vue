@@ -10,13 +10,13 @@
         </div>
         <div class="account__record">
             <div class="data__nameAndAge">
-                Alexander, 19
+                Name: {{userInformation.name}}, Age: {{userInformation.age}}
             </div>
             <div class="data__languages">
-                Lang: English, Russian 
+                Lang: {{userInformation.lang}}
             </div>
             <div class="data__discription">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ea vel, explicabo recusandae quaerat.
+                Description: {{userInformation.description}}
             </div>
         </div>
         <div class="account__addition">
@@ -30,6 +30,12 @@
     </div>      
 </template>
 <script setup>
+import { useAccountStore } from '@/stores/accountStore';
+import { computed } from 'vue';
+// const userInformation = useAccountStore().userInformation;
+const Ui = computed(()=>useAccountStore().fetchInformationAboudUser());
+const userInformation = useAccountStore().userInformation;
+
 </script>
 <style lang="css">
 

@@ -4,6 +4,7 @@ import {ref} from 'vue';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import {useAuthStore} from '../../stores/auth';
+import { useAccountStore } from '@/stores/accountStore';
 import Message from 'primevue/message';
 import Loader from '@/components/Loader.vue'
 import { useRouter } from 'vue-router';
@@ -16,7 +17,8 @@ const password = ref();
 
 const signup = async () => {
     await authStore.auth({email: email.value, password: password.value}, 'signup')
-    router.push('/cars')
+    router.push('/dictionary')
+    useAccountStore().setInformationAboudUser();
 }
 
 

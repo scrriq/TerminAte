@@ -10,8 +10,8 @@
                 </div>
             </div>
             <div class="account__information">
-                <app-profile/>
-                <app-settings/>
+                    <app-profile/>
+                    <app-settings/>
             </div>
         </div>
     </div>
