@@ -29,7 +29,7 @@
         </div>
 </template>
 <script setup>
-import MyButton from './UI/MyButton.vue';
+import MyButton from '@/components/UI/MyButton.vue';
 import { defineProps } from 'vue';
 const props = defineProps({
     position: {

@@ -16,17 +16,17 @@
 
 
 <script>    
-import MenuItem from './MenuItem.vue'
+import MenuItem from '@/components/AppMenu/MenuItem.vue';
 export default {
     data(){
         return{
             show: true,
             cards:[
-            {name: 'Dictionary', imageLink: require("../assets/icon/dictionary.png")},
-            {name: 'Shedule',imageLink: require("../assets/icon/shedule.png")},
-            {name: 'Cards', imageLink: require("../assets/icon/card.png")},
-            {name: 'Memorise', imageLink: require("../assets/icon/memorise.png")},
-            {name: 'Account', imageLink: require("../assets/icon/account.png")},
+            {name: 'Dictionary', imageLink: require("@/assets/icon/dictionary.png")},
+            {name: 'Shedule',imageLink: require("@/assets/icon/shedule.png")},
+            {name: 'Cards', imageLink: require("@/assets/icon/card.png")},
+            {name: 'Memorise', imageLink: require("@/assets/icon/memorise.png")},
+            {name: 'Account', imageLink: require("@/assets/icon/account.png")},
             ]
         }
     },

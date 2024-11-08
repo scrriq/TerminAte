@@ -44,7 +44,7 @@
 
 <script setup>
 import { usePostsStore } from '@/stores/postsStore';
-import MyCard from './UI/MyCard.vue';
+import MyCard from './MyCard.vue';
 import CardResult from './CardResult.vue';
 import { onMounted, ref, watch } from 'vue';
 import { useAuthStore } from '@/stores/auth';

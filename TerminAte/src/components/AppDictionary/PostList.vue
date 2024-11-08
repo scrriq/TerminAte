@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import PostItem from '@/components/PostItem.vue'
+import PostItem from '@/components/AppDictionary/PostItem.vue'
 export default{
     props: {
         posts: {

@@ -10,7 +10,7 @@
 <script setup>
 import {RouterLink, RouterView} from 'vue-router'
 import { useRouter } from 'vue-router';
-import AppMenu from './components/AppMenu.vue';
+import AppMenu from './components/AppMenu/AppMenu.vue';
 import { useAuthStore } from '@/stores/auth';
 import {computed} from 'vue'
 import router from './router';

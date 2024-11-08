@@ -1,12 +1,12 @@
 
 import { createWebHistory, createRouter } from "vue-router";
-import SignUp from '../components/SignUp.vue'
-import SignIn from '../components/SignIn.vue'
+import SignUp from '@/components/Authentication/SignUp.vue'
+import SignIn from '@/components/Authentication/SignIn.vue'
 import AppDefault from "@/components/AppDefault.vue";
 import { useAuthStore } from "@/stores/auth";
-import AppDictionary from "@/components/AppDictionary.vue";
-import AppCards from "@/components/AppCards.vue";
-import AppAccount from "@/components/AppAccount.vue";
+import AppDictionary from "@/components/AppDictionary/AppDictionary.vue";
+import AppCards from "@/components/AppCard/AppCards.vue";
+import AppAccount from "@/components/Account/AppAccount.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env),

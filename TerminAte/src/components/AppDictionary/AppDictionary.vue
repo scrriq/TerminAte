@@ -43,7 +43,7 @@ import axios from 'axios'
 import {ref, computed, onMounted} from 'vue'
 import axiosApiInstance from '@/api'
 import Card from "primevue/card"
-import Loader from './Loader.vue';
+import Loader from '../Loader.vue'
 import { useAuthStore } from '@/stores/auth'
 import { usePostsStore } from '@/stores/postsStore'
 

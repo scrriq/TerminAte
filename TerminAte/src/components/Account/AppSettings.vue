@@ -10,7 +10,7 @@
     </div>
 </template>
 <script setup>
-import ProfileSettings from './UI/ProfileSettings.vue';
+import ProfileSettings from './ProfileSettings.vue';
 </script>
 <style scoped>
 .app__settings {
