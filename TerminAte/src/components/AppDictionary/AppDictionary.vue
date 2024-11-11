@@ -46,6 +46,7 @@ import Card from "primevue/card"
 import Loader from '../Loader.vue'
 import { useAuthStore } from '@/stores/auth'
 import { usePostsStore } from '@/stores/postsStore'
+import { useAccountStore } from '@/stores/accountStore'
 
 const postStore = usePostsStore();
 const authStore = useAuthStore();

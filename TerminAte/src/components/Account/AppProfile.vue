@@ -31,10 +31,17 @@
 </template>
 <script setup>
 import { useAccountStore } from '@/stores/accountStore';
-import { computed } from 'vue';
-// const userInformation = useAccountStore().userInformation;
-const Ui = computed(()=>useAccountStore().fetchInformationAboudUser());
-const userInformation = useAccountStore().userInformation;
+import { onMounted } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+const authStore = useAuthStore();
+const accountStore = useAccountStore();
+onMounted(async()=>{
+    // accountStore.userId = authStore.userInfo.userId;
+    await accountStore.fetchInformationAboudUser(accountStore.userInformation);
+})
+const userInformation = accountStore.userInformation;
+
+// обработать логику отрисовки данных в компонент
 
 </script>
 <style lang="css">

@@ -1,84 +1,263 @@
 <template>
-    <main class="main">
-        <app-header/>
-        <div class="welcome">
-            <div class="welcome__container container">
-                <div class="welcome__blocks">
-                    <div class="welcome__info">
-                        <div class="welcome__header">
-                            <h1>Добро пожаловать </h1>
+    <div class="main__page">
+        <!-- header -->
+        <header class="main__header">
+            <div class="header__container container">
+                <div class="header__items">
+                    <div class="header__text-logo">
+                        <a class = 'header__text-link' href="">Termin<span class="text__orange">Ate</span></a>
+                    </div>
+                    <nav class="header__nav">
+                        <ul class="header__nav__list">
+                            <li class="header__list-link text__orange">Home</li>
+                            <li class="header__list-link">About</li>
+                            <li class="header__list-link">Begin</li>
+                            <li class="header__list-link">Services</li>
+                        </ul>       
+                    </nav>
+                    <div class="header__log">
+                        <router-link class="header__log__button" to="/signin">
+                            <p>Log in</p>
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main__container container">
+                <div class="welcome">
+                    <div class="welcome__content">
+                        <div class ="welcome__header">Добро пожаловать в Termin Ate!</div>
+                        <div class="welcome__text">
+                            <p>Ваш идеальный помощник для обучения. С нашим приложением вы сможете
+                            учить различные темы быстро и четко, достигая максимальных результатов за короткое время.
+                            Присоединяйтесь к нам и откройте для себя мир эффективного обучения!</p>
                         </div>
-                        <div class="welcome__about">
-                            <p>на сайт "Помощник для людей по изучению английского языка"! Наш проект предназначен для всех, кто хочет эффективно и увлекательно освоить английский язык. Мы предлагаем уникальные функции, которые помогут вам достичь желаемых результатов. </p>
+                        <div class="welcome__button-block">
+                            <button class="welcome__button">Узнать больше</button>
                         </div>
-                        <button class="welcome__button">Узнать больше</button>
                     </div>
-                    <div class="welcome__image-shell">
-                        <div class="welcome__image"></div>
+                    <div class="welcome__presentation">
+                        <div class="presentation__grid">
+                            <div class="presentation__card">Hello</div>
+                            <div class="presentation__card border__green">Привет</div>
+                            <div class="presentation__text">Termin</div>
+                            <div class="presentation__text">Ate</div>
+                            <div class="presentation__card">World</div>
+                            <div class="presentation__card border__red">Мир</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="advantages">
-            <div class="advantages__container container">
-                <div class="advantages__header">Преимущества и возможности</div>
-                <div class="advantages__grid">
-                    <div class="advantages__items block__first text__block">
-                        <p>Данный проект представляет собой уникальный инструмент для эффективного и увлекательного изучения английского языка. Он предоставляет множество функций, которые позволяют не только запоминать новые слова и фразы, но и улучшать грамматику, практиковать произношение и развивать навыки чтения и письма.</p>
-                    </div>
-                    <div class="advantages__items block__second image__block"></div>
-                    <div class="advantages__items block__third image__block"></div>
-                    <div class="advantages__items block__fourth text__block">
-                        <p>Одной из главных функций проекта являются карточки для запоминания новых слов и фраз. Они представлены в различных форматах, таких как картинки, аудио и видео материалы, что помогает лучше запоминать их. Кроме того, в проекте есть несколько режимов заучивания, которые позволяют выбрать наиболее удобный подход для каждого пользователя.</p>
-                    </div>
-                    <div class="advantages__items block__fifth text__block">
-                        <p>Контрольные работы также являются важной частью проекта. Они помогают оценить прогресс в изучении языка и определить этапы, на которых нужно усилить знания. Это позволяет более эффективно использовать свое время и достигать поставленных целей быстрее.</p>
-                    </div>
-                    <div class="advantages__items block__sixth image__block"></div>
-                </div>
-            </div>
-        </div>
-        <div class="start">
-            <div class="start__container container">
-                <div class="start__header">
-                    Начните прямо сейчас!
-                </div>
-                <div class="start__button-shell">
-                    <button class="start__button">
-                        Начать
-                    </button>
-                 </div>
-            </div>
-        </div>
-        <div class="question">
-            <div class="question__container container">
-                <div class="question__header">
-                    Остались вопросы? <br> - Рады будем вас слышать
-                </div>
-                <form action="" class="question__form">
-                    <input type="email" class="question__input-email" placeholder="Ваша почта...">
-                    <input type="text" class="question__input__text" placeholder="Вопрос...">
-                    <button class="question__button">
-                        Отправить
-                    </button>
-                 </form>
-            </div>
-        </div>
-        <app-footer/>
-    </main>
+        </main>
+    </div>
 </template>
-<script>
-import AppHeader from './AppHeader.vue';
-import AppFooter from './AppFooter.vue';
-export default{
-components:{
-    AppHeader, AppFooter
-}
-}
+<script setup>
+import {RouterLink, RouterView} from 'vue-router'
 </script>
 
-<style scoped>
-.main{
+<style lang="less" scoped>
+@headerHeight: 70px + @mainHeaderPadding;
+@headerAllHeight: @headerHeight;
+@mainHeaderPadding: 20px;
+@presentationCardWidth: 300px;
+@presentationCardHeight: 180px;
+/* Основные стили */
+.main__page {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    
+    background: linear-gradient(325deg,#343125,#000305,#0f0c00);
+
+}
+
+/* header */
+.main__header {
+    padding: @mainHeaderPadding 0px 0px 0px;
+    width: 100%;
+    height: @headerHeight;
+    /* border-bottom: 1px solid white; */
+}
+.container {
+    width: 1500px;
+    margin: 0px auto;
+    height: 100%;
+}
+.header__items {
+    width: 100%;   
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header__text-logo {
+    width: 70%;
+    height: 100%;
+    font-size: 36px;
+    font-family: 'Roboto Condensed';
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+}
+.text__orange{
+    color: #FFB800 !important;
+}
+.header__text-link{
+    color:white;
+    text-decoration: none;
+}
+.header__nav {
+    width: 100%;
+    height: 100%;
+}
+.header__nav__list {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+}
+.header__list-link {
+    color:white;
+    font-size: 18px;
+}
+.header__log {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 0px;
+}
+.header__log__button{
+    width: 150px;
+    height: 100%;
+    background-color: transparent;
+    border: 0px;
+    display: flex;
+    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid white;
+    
+}
+.header__log__button:active{
+    box-shadow: 0px 0px 20px 1px white;
+}
+.header__log__button > p{
+    font-family: 'Roboto Condensed';
+    font-size: 23px;
+    text-align: left;
+    color: white;
+    text-decoration: none;
+}
+.header__log__button > p::before{
+    content: "";
+    position: relative;
+    float: left;
+    width: 25px;
+    height: 25px;
+    background: url('@/assets/icon/IClogin.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0px 10px 0px 0px;
+}
+
+/* main */
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+/* welcome */
+.welcome {
+    width: 100%;
+    height: calc(100vh - @headerAllHeight);
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    max-height: 900px;
+
+}
+.welcome__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+}
+.welcome__presentation{
+    width: 100%;
+    height: 100%;
+        display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.presentation__grid {
+    display: grid;
+    grid-template: @presentationCardHeight (@presentationCardHeight / 1.7) @presentationCardHeight / 1fr 1fr;
+    column-gap: 50px;
+}
+.presentation__card {
+    width: @presentationCardWidth;
+    height: @presentationCardHeight;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+.presentation__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+.welcome__header {
+    font-size: 24px;
+    font-family: 'Roboto Condensed';
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 1.8px;
+}
+.welcome__text {
+    font-size: 20px;
+    font-family: 'Roboto Condensed';
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 10%;
+    letter-spacing: 1.8px;
+    padding: 0px 40px;
+}
+.welcome__button-block{
+    padding: 7px 75px;
+}
+.welcome__button {
+    width: 100%;
+    max-height: 70px;
+    min-height: 70px;
+    height: 100%;
+    border-radius: 25px;
+    font-size: 22px;
+    color: black;
+    font-weight: 700;
+    background-color: #FFB800;
+    border: 2px solid black;
+}
+.border__green{
+    border: 1px solid #0EFF42;
+}
+.border__red{
+    border: 1px solid #C20A0A;
+}
+/* .main{
+    width: 100%;
     height: 100%;
     background-color: #fff;
 }
@@ -310,5 +489,5 @@ components:{
     font-weight: 600;
     font-size: 24px;
     letter-spacing: 0.05em;
-}
+} */
 </style>

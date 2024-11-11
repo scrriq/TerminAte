@@ -1,38 +1,39 @@
 import { defineStore } from "pinia";
 import axiosApiInstance from "@/api";
 import { useAuthStore } from "./auth";
+import { usePostsStore } from "./postsStore";
 import {ref} from 'vue'
 import { computed } from "vue";
 
 export const useAccountStore = defineStore('account',() =>
     {
-        const userId = useAuthStore().userInfo.userId;
+        let userId = ""
         const userInformation = ref({
-            name: 'Not stated',
-            email: 'Not stated',
+            name: '',
+            email: '',
             age: 0,
-            lang: 'Not stated',
-            birth: 'Not stated',
-            description: 'Not stated',
+            lang: '',
+            birth: '',
+            description: '',
         })
 
 
         const fetchInformationAboudUser = async() => {            
             try{
+                userId = useAuthStore().userInfo.userId;                
                 const response = await axiosApiInstance.get(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${userId}/userData.json?`);
-                
                 userInformation.value.name = response.data.name;
                 userInformation.value.email = response.data.email;
                 userInformation.value.age = response.data.age;
                 userInformation.value.lang = response.data.lang;
                 userInformation.value.birth = response.data.birth;
                 userInformation.value.description = response.data.description;
-                
                 console.log("Ответ пришел");
-                
-                
+                console.log(userInformation.value.name);
             }catch(err){
-                console.log(err);      
+                console.log(err);  
+                console.log("Ответ не пришел");
+                    
             }
         }
 
@@ -40,8 +41,6 @@ export const useAccountStore = defineStore('account',() =>
             try{
                 await axiosApiInstance.put(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${userId}/userData.json?`, newUserInfo);
                 alert("Информация успешно сохранена");
-                
-                
                 await fetchInformationAboudUser();
             }catch(err){
                 console.log("пост отправился не удачно");

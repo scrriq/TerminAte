@@ -2,7 +2,7 @@ import {ref} from 'vue'
 import {defineStore} from 'pinia'
 import axios from 'axios'
 import axiosApiInstance from '@/api'
-
+import { useAccountStore } from './accountStore'
 const apiKey = process.env.VUE_APP_VITE_API_KEY_FIREBASE
 
 export const useAuthStore = defineStore('auth', () => {

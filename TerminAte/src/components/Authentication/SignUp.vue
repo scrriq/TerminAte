@@ -18,7 +18,6 @@ const password = ref();
 const signup = async () => {
     await authStore.auth({email: email.value, password: password.value}, 'signup')
     router.push('/dictionary')
-    useAccountStore().setInformationAboudUser();
 }
 
 
