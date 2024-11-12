@@ -220,7 +220,7 @@ import {RouterLink, RouterView} from 'vue-router'
     font-size: 35px;
 }
 .welcome__header {
-    font-size: 24px;
+    font-size: 40px;
     font-family: 'Roboto Condensed';
     font-weight: 400;
     text-align: center;

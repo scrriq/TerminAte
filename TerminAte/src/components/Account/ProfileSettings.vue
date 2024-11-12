@@ -28,6 +28,7 @@ const ageInput = ref(0);
 const langInput = ref('Not stated+');
 const birthInput = ref('Not stated+');
 const descriptionInput = ref('Not stated+');
+    
 
 const accountStore = useAccountStore()
 const userInformation = accountStore.userInformation
@@ -35,12 +36,12 @@ const saveData = () => {
     console.log("Функция сработала");
     
     const currentUserInformation = {
-        name: nameInput.value?.$el.value || 'Not stated',
-        email: emailInput.value?.$el.value || 'Not stated',
-        age: parseInt(ageInput.value?.$el.value) || 0,
-        lang: langInput.value?.$el.value || 'Not stated',
-        birth: birthInput.value?.$el.value || 'Not stated',
-        description: descriptionInput.value?.$el.value || 'Not stated',
+        name: nameInput.value?.$el.value,
+        email: emailInput.value?.$el.value,
+        age: parseInt(ageInput.value?.$el.value),
+        lang: langInput.value?.$el.value,
+        birth: birthInput.value?.$el.value,
+        description: descriptionInput.value?.$el.value,
     }
     accountStore.setInformationAboudUser(currentUserInformation);
 }

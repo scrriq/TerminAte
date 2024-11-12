@@ -10,13 +10,13 @@
         </div>
         <div class="account__record">
             <div class="data__nameAndAge">
-                Name: {{userInformation.name}}, Age: {{userInformation.age}}
+                Name: {{userInformation.name || "Not stated"}}, Age: {{userInformation.age || "Not stated"}}
             </div>
             <div class="data__languages">
-                Lang: {{userInformation.lang}}
+                Lang: {{userInformation.lang || "Not stated"}}
             </div>
             <div class="data__discription">
-                Description: {{userInformation.description}}
+                Description: {{userInformation.description || "Not stated"}}
             </div>
         </div>
         <div class="account__addition">
@@ -36,13 +36,9 @@ import { useAuthStore } from '@/stores/auth';
 const authStore = useAuthStore();
 const accountStore = useAccountStore();
 onMounted(async()=>{
-    // accountStore.userId = authStore.userInfo.userId;
     await accountStore.fetchInformationAboudUser(accountStore.userInformation);
 })
 const userInformation = accountStore.userInformation;
-
-// обработать логику отрисовки данных в компонент
-
 </script>
 <style lang="css">
 

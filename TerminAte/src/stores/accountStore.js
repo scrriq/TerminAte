@@ -22,18 +22,16 @@ export const useAccountStore = defineStore('account',() =>
             try{
                 userId = useAuthStore().userInfo.userId;                
                 const response = await axiosApiInstance.get(`https://enlino-default-rtdb.europe-west1.firebasedatabase.app/users/${userId}/userData.json?`);
-                userInformation.value.name = response.data.name;
-                userInformation.value.email = response.data.email;
-                userInformation.value.age = response.data.age;
-                userInformation.value.lang = response.data.lang;
-                userInformation.value.birth = response.data.birth;
-                userInformation.value.description = response.data.description;
-                console.log("Ответ пришел");
-                console.log(userInformation.value.name);
+                if(response.data != null){
+                    userInformation.value.name = response.data.name;
+                    userInformation.value.email = response.data.email;
+                    userInformation.value.age = response.data.age;
+                    userInformation.value.lang = response.data.lang;
+                    userInformation.value.birth = response.data.birth;
+                    userInformation.value.description = response.data.description;
+                };
             }catch(err){
                 console.log(err);  
-                console.log("Ответ не пришел");
-                    
             }
         }
 

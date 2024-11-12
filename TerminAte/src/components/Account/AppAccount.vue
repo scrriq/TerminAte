@@ -24,14 +24,19 @@ import router from '@/router';
 import {computed} from 'vue'
 import AppProfile from './AppProfile.vue';
 import AppSettings from './AppSettings.vue';
+import { useAccountStore } from '@/stores/accountStore';
 
 const authStore = useAuthStore()
+const accountStore = useAccountStore()
 const token = computed(() => authStore.userInfo.token)
 
 const logout = () => {
-  authStore.logout()
-  localStorage.removeItem('userTokens')
-  router.push('/signin')
+    accountStore.userInformation = ({
+        name: '', email: '', age: 0, lang: '', birth: '', description: ''
+    })
+    authStore.logout()
+    localStorage.removeItem('userTokens')
+    router.push('/signin')
 }
 
 </script>
