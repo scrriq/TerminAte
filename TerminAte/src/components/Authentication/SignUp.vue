@@ -28,6 +28,7 @@ const signup = async () => {
 
 <template>
     <div class="main">
+        <button class="goHome"><router-link class="linkHome" to="/">Home</router-link></button>
         <h2>Sign up</h2>
         <form class="flex flex-column gap-3">
             <Message v-if = "authStore.error" severity="error">{{ authStore.error }}</Message>
@@ -53,9 +54,24 @@ const signup = async () => {
 </template>
 
 
-<style>
+<style scoped>
+.goHome{
+    width: 200px;
+    height: 50px;
+    background-color: transparent;
+    border: 1px solid #FFB800;
+    margin: 20px 0px 200px 0px;
+    .linkHome{
+        color: white;
+        text-decoration: none;
+        font-size: 24px;    
+    }
+}
 .main{
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 </style>

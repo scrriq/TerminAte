@@ -1,3 +1,8 @@
+<script setup>
+import {RouterLink, RouterView} from 'vue-router'
+</script>
+
+
 <template>
     <div class="main__page">
         <!-- header -->
@@ -27,51 +32,129 @@
             <div class="main__container container">
                 <div class="welcome">
                     <div class="welcome__content">
-                        <div class ="welcome__header">Добро пожаловать в Termin Ate!</div>
-                        <div class="welcome__text">
-                            <p>Ваш идеальный помощник для обучения. С нашим приложением вы сможете
-                            учить различные темы быстро и четко, достигая максимальных результатов за короткое время.
-                            Присоединяйтесь к нам и откройте для себя мир эффективного обучения!</p>
+                        <div class="welcome__header inria-serif-regular">
+                            Your learning tool and assistant 
                         </div>
-                        <div class="welcome__button-block">
-                            <button class="welcome__button">Узнать больше</button>
+                        <div class="welcome__info italiana-regular">
+                            Welcome to TerminAte<br>
+                            Create your first card
                         </div>
+                        <button class="welcome__button inria-serif-regular">
+                            Learn more  
+                        </button>
                     </div>
-                    <div class="welcome__presentation">
-                        <div class="presentation__grid">
-                            <div class="presentation__card">Hello</div>
-                            <div class="presentation__card border__green">Привет</div>
-                            <div class="presentation__text">Termin</div>
-                            <div class="presentation__text">Ate</div>
-                            <div class="presentation__card">World</div>
-                            <div class="presentation__card border__red">Мир</div>
+                </div>
+                <div class="home">
+                    <div class="home__grid inria-serif-regular">
+                        <div class="home__card">
+                            Term
+                        </div>
+                        <div class="home__words">
+                            <div class="w1">Create Cards</div>
+                            <div class="w2">Tech</div>
+                            <div class="w3">Devlop</div>
+                        </div>
+                        <div class="home__card">
+                            Ate
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="about">
+                        <div class="about__grid">
+                        <div class="about__items block__first text__block">
+                            <p>Данный проект представляет собой уникальный инструмент для эффективного и увлекательного изучения английского языка. Он предоставляет множество функций, которые позволяют не только запоминать новые слова и фразы, но и улучшать грамматику, практиковать произношение и развивать навыки чтения и письма.</p>
+                        </div>
+                        <div class="about__items block__second image__block"></div>
+                        <div class="about__items block__third image__block"></div>
+                        <div class="about__items block__fourth text__block">
+                            <p>Одной из главных функций проекта являются карточки для запоминания новых слов и фраз. Они представлены в различных форматах, таких как картинки, аудио и видео материалы, что помогает лучше запоминать их. Кроме того, в проекте есть несколько режимов заучивания, которые позволяют выбрать наиболее удобный подход для каждого пользователя.</p>
+                        </div>
+                        <div class="about__items block__fifth text__block">
+                            <p>Контрольные работы также являются важной частью проекта. Они помогают оценить прогресс в изучении языка и определить этапы, на которых нужно усилить знания. Это позволяет более эффективно использовать свое время и достигать поставленных целей быстрее.</p>
+                        </div>
+                        <div class="about__items block__sixth image__block"></div>
+                    </div>
+                </div>
+                <div class="start">
+                    <div class="start__info">
+                        <div class="start__header inria-serif-regular">
+                            Start using our app right now or download it to your phone
+                        </div>
+                        <div class="start__buttons">
+                            <div class="start__button-shell ">
+                                <button class="start__button inria-serif-regular">
+                                    Start Now
+                                </button>
+                            </div>
+                            <div class="start__button-shell">
+                                <button class="start__button inria-serif-regular">
+                                    Download App
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile">
+                    <div class="mobile__grid">
+                        <div class="mobile__info">
+                            <div class="mobile__title inria-serif-regular">
+                                You can use the mobile app, both online and offline, absolutely for free!!!
+                            </div>
+                            <div class="mobile__download">
+                                <div class="mobile__getApp">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile__image__shell">
+                            <div class="mobile__image"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </main>
     </div>
 </template>
-<script setup>
-import {RouterLink, RouterView} from 'vue-router'
-</script>
 
 <style lang="less" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&display=swap');
 @headerHeight: 70px + @mainHeaderPadding;
 @headerAllHeight: @headerHeight;
 @mainHeaderPadding: 20px;
 @presentationCardWidth: 300px;
 @presentationCardHeight: 180px;
+@welcomeP: 215px;
+@yellow: #FFB800;
+
 /* Основные стили */
 .main__page {
     width: 100%;
     height: 100%;
     font-family: Arial, sans-serif;
     color: #fff;
-    
     background: linear-gradient(325deg,#343125,#000305,#0f0c00);
 
 }
+// шрифты 
+.italiana-regular {
+  font-family: "Italiana", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.inria-serif-regular {
+  font-family: "Inria Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// default conatiner 
+.container {
+    width: 1500px;
+    margin: 0px auto;
+    height: 100%;
+}
+
 
 /* header */
 .main__header {
@@ -79,11 +162,6 @@ import {RouterLink, RouterView} from 'vue-router'
     width: 100%;
     height: @headerHeight;
     /* border-bottom: 1px solid white; */
-}
-.container {
-    width: 1500px;
-    margin: 0px auto;
-    height: 100%;
 }
 .header__items {
     width: 100%;   
@@ -103,7 +181,7 @@ import {RouterLink, RouterView} from 'vue-router'
     align-items: center;
 }
 .text__orange{
-    color: #FFB800 !important;
+    color: @yellow !important;
 }
 .header__text-link{
     color:white;
@@ -173,14 +251,15 @@ import {RouterLink, RouterView} from 'vue-router'
     width: 100%;
     height: 100%;
 }
+.main__container{
+    width: 1350px;
+}
 
 /* welcome */
 .welcome {
     width: 100%;
     height: calc(100vh - @headerAllHeight);
-    display: grid;
-    grid-template: 1fr / 1fr 1fr;
-    max-height: 900px;
+    max-height: 700px;
 
 }
 .welcome__content {
@@ -188,173 +267,84 @@ import {RouterLink, RouterView} from 'vue-router'
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    row-gap: 30px;
-}
-.welcome__presentation{
-    width: 100%;
-    height: 100%;
-        display: flex;
     align-items: center;
-    justify-content: center;
+    padding: @welcomeP 0px 0px 0px;
+
 }
-.presentation__grid {
-    display: grid;
-    grid-template: @presentationCardHeight (@presentationCardHeight / 1.7) @presentationCardHeight / 1fr 1fr;
-    column-gap: 50px;
-}
-.presentation__card {
-    width: @presentationCardWidth;
-    height: @presentationCardHeight;
-    border: 1px solid white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    background-color: rgba(0, 0, 0, 0.35);
-}
-.presentation__text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 35px;
-}
-.welcome__header {
-    font-size: 40px;
-    font-family: 'Roboto Condensed';
-    font-weight: 400;
-    text-align: center;
-    letter-spacing: 1.8px;
-}
-.welcome__text {
-    font-size: 20px;
-    font-family: 'Roboto Condensed';
-    font-weight: 400;
-    text-align: center;
-    letter-spacing: 10%;
-    letter-spacing: 1.8px;
-    padding: 0px 40px;
-}
-.welcome__button-block{
-    padding: 7px 75px;
-}
-.welcome__button {
-    width: 100%;
-    max-height: 70px;
-    min-height: 70px;
-    height: 100%;
-    border-radius: 25px;
-    font-size: 22px;
-    color: black;
-    font-weight: 700;
-    background-color: #FFB800;
-    border: 2px solid black;
-}
-.border__green{
-    border: 1px solid #0EFF42;
-}
-.border__red{
-    border: 1px solid #C20A0A;
-}
-/* .main{
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-}
-.welcome {
-    height: 700px;
-    width: 100%;
-    background-color: #000627;
-}
-.welcome__container {
-}
-.container{
-    width: 1100px;
-    margin: 0px auto;
-}
-.welcome__blocks {
-    padding: 125px 0px 0px 0px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-.welcome__info {
-    width: 100%;
-    height: 400px;
-    display: grid;
-    grid-template: 1fr 5fr 1fr/1fr;
-}
-.welcome__header {
-}
-.welcome__header > h1 {
-    font-family: 'Montserrat';
-    font-size: 40px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-}
-.welcome__about {
-}
-.welcome__about > p{
-    font-family: 'Montserrat';
+.welcome__header{
     font-size: 24px;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0.05em;
 }
-.welcome__button {
-    width: 325px;
-    height: 100%;
-    background-color: #FFB800;
-    border: 1px solid black;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Roboto';
-    font-size: 22px;
-    color: #000;
-    font-weight: 500;
+.welcome__info{
+    margin: 25px 0px 0px 0px;
+    font-size: 70px;
+    text-align: center;
 }
-.welcome__image-shell {
-    width: 100%;
-    height: 400px;
-    padding: 50px;
+.welcome__button{
+    width: 300px;
+    height: 60px;
+    background-color: transparent;
+    border: 2px solid @yellow;
+    font-size: 28px;
+    border-radius: 25px;
+    margin: 40px 0px 0px 0px;
+    color: white;
 }
-.welcome__image{
-    width: 100%;
-    height: 100%;
-    border: 2px solid #fff;
-    background: url('@/assets/engl1.jpg');
-    background-repeat: no-repeat;
-    object-fit: cover;
-    background-size: 100% 100%;
-    border-radius: 50px;
-}
-.advantages {
-    width: 100%;
-    height: 1300px;
-    background-color: #000627;
-}
-.advantages__container {
+.welcome__button:active{
+    box-shadow: 0px 0px 10px @yellow;
 }
 
-.advantages__header {
-    text-align: center;
-    font-size: 45px;
-    font-family: 'Montserrat';
-    font-weight: 400;
-}
-.advantages__grid {
+
+// home 
+.home{
     width: 100%;
-    height: 1100px;
+    height: 800px;
+}
+.home__grid{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr 1fr;
+    padding: 75px 0px;
+
+}
+.home__words{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 36px;
+}
+.home__card{
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    box-shadow: 0px 0px 15px white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+}
+
+
+
+// about 
+.about {
+    width: 100%;
+    height: 100%;
+    padding: 200px 0px 0px;
+}
+.about__grid {
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: [first] 1fr [line2] 1fr [line3] 1fr [col4-start] 1fr [col4-end] 1fr [five] 1fr [end];
     grid-template-rows: [row1-start] 1fr [row1-end] 1fr [third-line] 1fr [last-line];
     row-gap: 50px;
     column-gap: 50px;
-    margin: 100px 0px 0px 0px;
 }
-.advantages__items {
+.about__items {
     font-size: 22px;
     padding: 40px;
     width: 100%;
@@ -363,8 +353,7 @@ import {RouterLink, RouterView} from 'vue-router'
     font-family: "Montserrat";
     line-height: 30px;
     letter-spacing: 0.08em;
-    border: 1px solid #7E1280;
-    box-shadow: 0px 0px 10px 0px #7E1280;
+    border: 1px solid @yellow;
 
 }
 .block__first {
@@ -407,87 +396,115 @@ import {RouterLink, RouterView} from 'vue-router'
     background: url('@/assets/engl4.jpg');
 }
 .text__block{
-    background-color:rgba(16, 30, 35, 0.73);
-    border: 1px solid #128073;
+    background-color:rgba(0, 0, 0, 0.5);
+    border: 1px solid #ffffff;
     color:white;
-    box-shadow: 0px 0px 10px 0px#128073;
 }
 .image__block{
     background-repeat: no-repeat;
     object-fit: cover;
     background-size: 100% 100%;
 }
+
+// start ( begin )
 .start {
-    padding: 100px 0px 0px 0px;
     width: 100%;
-    height: 500px;
-    background-color:#000627;
+    height: 700px;
+    padding: 200px 0px 0px 0px;
 }
-.start__container {
+.start__info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
 }
 .start__header {
-    font-size: 50px;
+    width: 100%;
+    height: 100%;
+    font-size: 60px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0px 100px;
     text-align: center;
-    font-family: 'Montserrat';
-    letter-spacing: 0.05em;
 }
-.start__button-shell{
-    margin: 95px 0px 0px 0px;
+.start__buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+.start__button{
+    width: 320px;
+    height: 80px;
+    font-size: 30px;
+    background-color: transparent;
+    border: 4px solid #C37500;
+    border-radius: 30px
+}
+.start__button-shell {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
-.start__button {
-    width: 1000px;
-    height: 125px;
-    color:#fff;
+
+
+//mobile
+.mobile {
+    margin: 100px 0px 0px 0px;
+    width: 100%;
+    height: 800px;
+}
+.mobile__grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: 1fr / 1.7fr 1fr;
+    padding: 0px 50px;
+}
+.mobile__info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 60px;
+}
+.mobile__title {
+    width: 100%;
+    height: 100%;
     font-size: 50px;
-    font-family: 'Montserrat';
-    font-weight: 700;
-    border: 1px solid #000AFF;
-    box-shadow: 0px 0px 10px 0px #000AFF;
-    background-color: #3d3d3d47;
-    border-radius: 25px;
+    display: flex;
+    align-items: flex-end;
 }
-.question {
+.mobile__download {
     width: 100%;
-    height: 600px;
-    background-color: #000627;
+    height: 100%;
 }
-.question__container {
-    width: 800px;
-    margin: 0px auto;
+.mobile__getApp{
+    width: 275px;
+    height: 70px;
+    border: 1px solid white;
+    border-radius: 30px;
+    background-image: url("@/assets/getAppAndroid.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.question__header {
-    font-size: 50px;
-    text-align: center;
-    font-family: 'Montserrat';
-    letter-spacing: 0.05em;
-}
-.question__form {
-    margin: 65px 0px 0px 0px;
-}
-.question__input-email {
+.mobile__image__shell {
     width: 100%;
-    height: 50px;
-    font-size: 24px;
-    color:black;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center
 }
-.question__input__text {
-    margin: 40px 0px;
+.mobile__image {
     width: 100%;
-    height: 150px;
-    font-size: 24px;
-    color:black;
+    height: 100%;
+    max-width: 375px;
+    max-height: 650px;
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: rgb(81, 14, 14);
 }
-.question__button {
-    width: 100%;
-    height: 50px;
-    background-color: #FF6B00;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 24px;
-    letter-spacing: 0.05em;
-} */
 </style>
