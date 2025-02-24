@@ -33,8 +33,7 @@ export default{
 .post{
     padding: 15px 30px;
     border-radius: 10px;
-    background-color: teal;
-    border: 2px solid black;
+    border: 2px solid teal;
     margin: 15px 0px 0px 0px;
     display: grid;
     grid-template: 1fr / 7fr 0.5fr;

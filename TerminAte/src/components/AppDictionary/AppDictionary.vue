@@ -8,9 +8,8 @@
                     </div>
 
                     <div class="dictionary__add-card">
-                        <button class="add-card__btn" @click="showWindow">Создать карточку</button>
+                        <button class="add-card__btn" @click="showWindow">Create Card</button>
                     </div>
-                    
                 </div>
 
                 <!-- блок с карточками -->
@@ -99,8 +98,9 @@ h1{
     font-size: 30px;
 }
 .dictionary {
-    background-color: #19495E;
-    min-height: 820px;
+    background: -webkit-linear-gradient(226deg, #003723,#000000,#000000);
+    background: linear-gradient(226deg, #003723,#000000,#000000);                                          
+    min-height: 100vh;
 }
 .dictionary__container {
     width: 1100px;
@@ -120,25 +120,26 @@ h1{
     font-weight: 500;
     margin: 25px 25px;
     display: flex;
+    align-items: center;
 }
 .dictionary__add-card {
-    padding: 10px 0px 20px 130px;
+    padding: 10px 0px 20px 175px;
 }
 .add-card__btn{
     font-size: 24px;
     font-weight: 500;
     font-family: 'Montserrat';
-    color: black;
-    border: 2px solid black;
-    border-radius: 50px;
-    background-color: #428300;
+    color: white;
+    border: 3px solid #26BA84;
+    border-radius: 10px;
+    background-color: transparent
 
 }
 .dirctionary__words {
     margin: 50px 0px 50px 0px;
-    border: 3px solid black;
+    border: 3px solid #0b9c9c77;
+    box-shadow: 0px 0px 25px 5px #0b9c9c77;
     border-radius: 25px;
-    background: #0b9c9c77;
     padding: 30px 100px;
     display: flex;
     flex-direction: column;
@@ -158,7 +159,7 @@ h1{
     min-height: 50px;
     border-radius: 15px;
     background: transparent;
-    border: 3px solid white;
+    border: 3px solid teal;
     font-size: 20px;
     padding: 0px 15px;
     display: grid;

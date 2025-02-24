@@ -117,8 +117,8 @@ import {RouterLink, RouterView} from 'vue-router'
 </template>
 
 <style lang="less" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Italiana&dissplay=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,4/00;0,700;1,300;1,400;1,700&family=Italiana&display=swap');
 @headerHeight: 70px + @mainHeaderPadding;
 @headerAllHeight: @headerHeight;
 @mainHeaderPadding: 20px;
